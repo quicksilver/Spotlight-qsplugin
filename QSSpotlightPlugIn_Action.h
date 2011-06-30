@@ -15,7 +15,7 @@
     NSMetadataQuery *_query;
     NSString *_searchKey;
     BOOL _searchContent;
-	
 }
+- (NSString *)trueQueryFor:(NSString *)query;
+- (void)runQueryInFinder:(NSString *)query name:(NSString *)name scope:(NSString *)scope;
 @end
-
