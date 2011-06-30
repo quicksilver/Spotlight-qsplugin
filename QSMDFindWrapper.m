@@ -77,7 +77,7 @@
 	//return;
 	NSData *data=[[notif userInfo]
                   objectForKey: NSFileHandleNotificationDataItem];
-	NSString *newString=[[[NSString alloc]initWithData:data encoding:nil]autorelease];
+	NSString *newString=[[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
 	if ([newString length])
 		[resultPaths appendString:newString];
 	

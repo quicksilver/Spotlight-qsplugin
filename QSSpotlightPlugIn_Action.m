@@ -69,6 +69,7 @@
 		// failed to open the panel
 		// present an error to the user
     }
+    return nil;
 }
 
 - (QSObject *)spotlightSearchInFolder:(QSObject *)dObject forString:(QSObject *)iObject{
@@ -146,9 +147,9 @@
 	NSMutableString *filename=[[name mutableCopy]autorelease];
 	[filename replaceOccurrencesOfString:@"/" withString:@"_" options:nil range:NSMakeRange(0,[filename length])];
 	if ([filename length]>242)
-		filename=[filename substringToIndex:242];
+		filename = (NSMutableString *)[filename substringToIndex:242];
 	[filename appendString:@".savedSearch"];
-	filename=[NSTemporaryDirectory() stringByAppendingPathComponent:filename];
+	filename = (NSMutableString *)[NSTemporaryDirectory() stringByAppendingPathComponent:filename];
 	[dict writeToFile:filename atomically:NO];
 	[[NSFileManager defaultManager]changeFileAttributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:
 		NSFileExtensionHidden] atPath:filename];
