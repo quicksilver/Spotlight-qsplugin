@@ -15,7 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
-	<string>E6</string>
+	<string>E7</string>
+	<key>CFBundleSignature</key>
+	<string>0.8</string>
 	<key>NSPrincipalClass</key>
 	<string>QSSpotlightPlugIn</string>
 	<key>QSActions</key>
