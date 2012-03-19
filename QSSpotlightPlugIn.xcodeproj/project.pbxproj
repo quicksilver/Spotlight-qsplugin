@@ -21,7 +21,6 @@
 		7FD8EF3307EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8EF3207EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m */; };
 		7FD8EF4407EB586A00F57CB7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FD8EF4307EB586A00F57CB7 /* Carbon.framework */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
-		E1EAB046068128A200774DFF /* QSSpotlightPlugIn.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAB045068128A200774DFF /* QSSpotlightPlugIn.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +31,6 @@
 		1483E54610D0F139009F139A /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Release.xcconfig; sourceTree = "<group>"; };
 		1483E54710D0F139009F139A /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
 		1483E54810D0F139009F139A /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		32DBCF980370C29C00C91783 /* QSSpotlightPlugIn_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSpotlightPlugIn_Prefix.pch; sourceTree = "<group>"; };
 		7F24E5B007ED169300943D5A /* QSSpotlightSavedSearchSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSpotlightSavedSearchSource.h; sourceTree = "<group>"; };
 		7F24E5B107ED169300943D5A /* QSSpotlightSavedSearchSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightSavedSearchSource.m; sourceTree = "<group>"; };
 		7F4894A907F5F4EF007CB98F /* QSSpotlightObjectSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSpotlightObjectSource.h; sourceTree = "<group>"; };
@@ -56,8 +54,6 @@
 		8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spotlight Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AD04281517A6B30039C3A0 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		E1EAB045068128A200774DFF /* QSSpotlightPlugIn.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightPlugIn.m; sourceTree = "<group>"; };
-		E1EAB047068128A800774DFF /* QSSpotlightPlugIn.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSSpotlightPlugIn.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,9 +139,6 @@
 				7F4C3E4C082C16FC000B4D53 /* QSNSMDQueryWrapper.m */,
 				7FD8EF3107EB574C00F57CB7 /* QSSpotlightPlugIn_Action.h */,
 				7FD8EF3207EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m */,
-				32DBCF980370C29C00C91783 /* QSSpotlightPlugIn_Prefix.pch */,
-				E1EAB047068128A800774DFF /* QSSpotlightPlugIn.h */,
-				E1EAB045068128A200774DFF /* QSSpotlightPlugIn.m */,
 				7F24E5B007ED169300943D5A /* QSSpotlightSavedSearchSource.h */,
 				7F24E5B107ED169300943D5A /* QSSpotlightSavedSearchSource.m */,
 				7F73010C07EF87280047141E /* QSMDFindWrapper.h */,
@@ -240,7 +233,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E1EAB046068128A200774DFF /* QSSpotlightPlugIn.m in Sources */,
 				7FD8EF3307EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m in Sources */,
 				7F24E5B207ED169300943D5A /* QSSpotlightSavedSearchSource.m in Sources */,
 				7F73010E07EF87280047141E /* QSMDFindWrapper.m in Sources */,
