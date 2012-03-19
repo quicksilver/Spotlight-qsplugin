@@ -8,7 +8,7 @@
 
 #import "QSSpotlightObjectSource.h"
 #import "QSMDFindWrapper.h"
-#import <QSCore/QSLibrarian.h>
+
 @implementation QSSpotlightObjectSource
 - (id)init
 {
@@ -18,6 +18,13 @@
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(arrayLoaded:) name:@"QSSourceArrayFinished" object:nil];
 	}
 	return self;
+}
+
+- (void)dealloc
+{
+	[pending release];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:@"QSSourceArrayFinished" object:nil];
+	[super dealloc];
 }
 
 - (void)arrayLoaded:(NSNotification *)notif
