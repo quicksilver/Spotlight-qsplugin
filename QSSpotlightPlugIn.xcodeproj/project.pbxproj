@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7F24E5B207ED169300943D5A /* QSSpotlightSavedSearchSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F24E5B107ED169300943D5A /* QSSpotlightSavedSearchSource.m */; };
 		7F4894AB07F5F4EF007CB98F /* QSSpotlightObjectSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4894AA07F5F4EF007CB98F /* QSSpotlightObjectSource.m */; };
-		7F4894B807F5F724007CB98F /* QSSpotlightObjectSource.nib in Resources */ = {isa = PBXBuildFile; fileRef = 7F4894B707F5F724007CB98F /* QSSpotlightObjectSource.nib */; };
 		7F4C3E4D082C16FC000B4D53 /* QSNSMDQueryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C3E4C082C16FC000B4D53 /* QSNSMDQueryWrapper.m */; };
 		7F66750007FE661D00A2CEF7 /* QSMDQueryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6674FF07FE661D00A2CEF7 /* QSMDQueryWrapper.m */; };
 		7F73010E07EF87280047141E /* QSMDFindWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F73010D07EF87280047141E /* QSMDFindWrapper.m */; };
@@ -21,6 +20,7 @@
 		7FD8EF3307EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8EF3207EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m */; };
 		7FD8EF4407EB586A00F57CB7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FD8EF4307EB586A00F57CB7 /* Carbon.framework */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
+		D4751D081517BD36009BEFBB /* QSSpotlightObjectSource.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,6 @@
 		7F24E5B107ED169300943D5A /* QSSpotlightSavedSearchSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightSavedSearchSource.m; sourceTree = "<group>"; };
 		7F4894A907F5F4EF007CB98F /* QSSpotlightObjectSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSpotlightObjectSource.h; sourceTree = "<group>"; };
 		7F4894AA07F5F4EF007CB98F /* QSSpotlightObjectSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightObjectSource.m; sourceTree = "<group>"; };
-		7F4894B707F5F724007CB98F /* QSSpotlightObjectSource.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = QSSpotlightObjectSource.nib; sourceTree = "<group>"; };
 		7F4C3E4B082C16FC000B4D53 /* QSNSMDQueryWrapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSNSMDQueryWrapper.h; sourceTree = "<group>"; };
 		7F4C3E4C082C16FC000B4D53 /* QSNSMDQueryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSNSMDQueryWrapper.m; sourceTree = "<group>"; };
 		7F6674FE07FE661D00A2CEF7 /* QSMDQueryWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSMDQueryWrapper.h; sourceTree = "<group>"; };
@@ -52,6 +51,7 @@
 		7FD8EF4307EB586A00F57CB7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spotlight Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSSpotlightObjectSource.xib; sourceTree = "<group>"; };
 		D4AD04281517A6B30039C3A0 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -81,7 +81,6 @@
 				0259C582FE90428111CA0C5A /* Resources */,
 				1ED78706FE9D4A0611CA0C5A /* Products */,
 				2E58F364FFB232C311CA0CBA /* Frameworks */,
-				7F4894B707F5F724007CB98F /* QSSpotlightObjectSource.nib */,
 			);
 			name = QSSpotlightPlugIn;
 			sourceTree = "<group>";
@@ -89,6 +88,7 @@
 		0259C582FE90428111CA0C5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
 				7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */,
 			);
@@ -205,8 +205,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F4894B807F5F724007CB98F /* QSSpotlightObjectSource.nib in Resources */,
 				7F9441AE0803AA6D007EDC31 /* QSObjectSource.name.strings in Resources */,
+				D4751D081517BD36009BEFBB /* QSSpotlightObjectSource.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
