@@ -13,7 +13,7 @@
 		7F4C3E4D082C16FC000B4D53 /* QSNSMDQueryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C3E4C082C16FC000B4D53 /* QSNSMDQueryWrapper.m */; };
 		7F66750007FE661D00A2CEF7 /* QSMDQueryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6674FF07FE661D00A2CEF7 /* QSMDQueryWrapper.m */; };
 		7F73010E07EF87280047141E /* QSMDFindWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F73010D07EF87280047141E /* QSMDFindWrapper.m */; };
-		7F9441AE0803AA6D007EDC31 /* SourceNames.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9441AD0803AA6D007EDC31 /* SourceNames.strings */; };
+		7F9441AE0803AA6D007EDC31 /* QSObjectSource.name.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */; };
 		7FA983D0096F0E3D00321006 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA983CC096F0E3D00321006 /* QSCore.framework */; };
 		7FA983D1096F0E3D00321006 /* QSEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA983CD096F0E3D00321006 /* QSEffects.framework */; };
 		7FA983D2096F0E3D00321006 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA983CE096F0E3D00321006 /* QSFoundation.framework */; };
@@ -44,7 +44,7 @@
 		7F6674FF07FE661D00A2CEF7 /* QSMDQueryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSMDQueryWrapper.m; sourceTree = "<group>"; };
 		7F73010C07EF87280047141E /* QSMDFindWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSMDFindWrapper.h; sourceTree = "<group>"; };
 		7F73010D07EF87280047141E /* QSMDFindWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSMDFindWrapper.m; sourceTree = "<group>"; };
-		7F9441AD0803AA6D007EDC31 /* SourceNames.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = SourceNames.strings; sourceTree = "<group>"; };
+		7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = QSObjectSource.name.strings; sourceTree = "<group>"; };
 		7FA983CC096F0E3D00321006 /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSCore.framework; sourceTree = QSFrameworks; };
 		7FA983CD096F0E3D00321006 /* QSEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSEffects.framework; sourceTree = QSFrameworks; };
 		7FA983CE096F0E3D00321006 /* QSFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSFoundation.framework; sourceTree = QSFrameworks; };
@@ -94,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
-				7F9441AD0803AA6D007EDC31 /* SourceNames.strings */,
+				7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -213,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F4894B807F5F724007CB98F /* QSSpotlightObjectSource.nib in Resources */,
-				7F9441AE0803AA6D007EDC31 /* SourceNames.strings in Resources */,
+				7F9441AE0803AA6D007EDC31 /* QSObjectSource.name.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
