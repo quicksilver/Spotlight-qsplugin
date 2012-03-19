@@ -12,6 +12,6 @@
 
 @interface QSSpotlightObjectSource : QSObjectSource 
 {
-    NSMutableDictionary *pending;
+	NSMutableDictionary *pending;
 }
 @end
