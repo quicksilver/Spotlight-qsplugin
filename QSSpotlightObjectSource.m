@@ -78,4 +78,32 @@
 	}
     return [super settingsView];
 }
+
+- (IBAction)selectSearchPath:(NSButton *)sender
+{
+	NSMutableDictionary *settings = [self currentEntry];
+	NSLog(@"spotlight entry settings: %@", settings);
+	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+	NSString *oldPath = [[settings objectForKey:kItemPath] stringByStandardizingPath];
+	if (!oldPath) {
+		oldPath = @"/";
+	}
+	[openPanel setCanChooseDirectories:YES];
+	[openPanel setCanChooseFiles:NO];
+	if (![openPanel runModalForDirectory:[oldPath stringByDeletingLastPathComponent] file:[oldPath lastPathComponent] types:nil]) return;
+	NSString *newPath = [openPanel filename];
+	[searchPath setStringValue:[newPath stringByAbbreviatingWithTildeInPath]];
+	// update catalog entry
+	[settings setObject:newPath forKey:kItemPath];
+	//[settings setObject:[settings objectForKey:@"query"] forKey:kItemName];
+	[currentEntry setObject:[NSNumber numberWithFloat:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
+	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChanged object:[self currentEntry]];
+}
+
+- (NSString *)valueForUndefinedKey:(NSString *)key
+{
+	// prevent exceptions when entries created with older versions of the plug-in are loaded
+	return nil;
+}
+
 @end
