@@ -14,8 +14,7 @@
 {
 	self = [super init];
 	if (self != nil) {
-		pending = [[NSMutableDictionary alloc] init];
-		query = [[NSMetadataQuery alloc] init];
+//		queries = [[NSMutableDictionary alloc] init];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(arrayLoaded:) name:NSMetadataQueryDidFinishGatheringNotification object:nil];
 	}
 	return self;
@@ -23,21 +22,18 @@
 
 - (void)dealloc
 {
-	[pending release];
-	[query release];
+//	[queries release];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSMetadataQueryDidFinishGatheringNotification object:nil];
 	[super dealloc];
 }
 
 - (void)arrayLoaded:(NSNotification *)notif
 {
-	//NSLog(@"arrayLoaded");
+	// Spotlight query results are ready
+	NSMetadataQuery *query = [notif object];
 	[query stopQuery];
-	NSArray *results = [[notif object] results];
-	NSString *key = [[pending allKeysForObject:results] lastObject];
-	//NSLog(@"query finished for entry: %@ with %d results", key, [[notif object] resultCount]);
-	// call objectsForEntry again now that results are ready
-	[[QSLib entryForID:key] scanForced:YES];
+	// continue processing in objectsForEntry
+	CFRunLoopStop(CFRunLoopGetCurrent());
 }
 
 - (NSImage *)iconForEntry:(NSDictionary *)theEntry
@@ -47,40 +43,34 @@
 
 - (NSArray *)objectsForEntry:(NSDictionary *)theEntry
 {
-	NSString *entryKey = [theEntry objectForKey:kItemID];
-	NSArray *array = [pending objectForKey:entryKey];
-	if ([array count]) {
-		// process search results
-		NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
-		NSString *resultPath = nil;
-		// fast enumeration is not recommended for NSMetadataQuery
-		for (int i = 0; i < [query resultCount]; i++) {
-			// get the path and create a QSObject with it
-			//NSLog(@"result path: %@", [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey]);
-			resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
-			[objects addObject:[QSObject fileObjectWithPath:resultPath]];
-		}
-		[pending removeObjectForKey:entryKey];
-		query = nil;
-		return objects;
-	} else {
-		// initiate the search
-		NSString *searchString = [theEntry objectForKey:@"query"];
-		NSString *path = [theEntry objectForKey:@"path"];
-		// modify the search string to make NSMetadataQuery happy
-		// "my text" should become "kMDItemTextContent == 'my text'"
-		// wildcard searches need to use LIKE instead of ==
-		NSPredicate *search = [NSPredicate predicateWithFormat:searchString];
-		[query setPredicate:search];
-		if (path) {
-			NSURL *pathURL = [NSURL fileURLWithPath:path];
-			[query setSearchScopes:[NSArray arrayWithObject:pathURL]];
-		}
-		[query startQuery];
-		[pending setObject:[query results] forKey:entryKey];
-		//NSLog(@"started search for entry: %@", entryKey);
+	// initiate the search
+	NSString *searchString = [theEntry objectForKey:@"query"];
+	NSString *path = [theEntry objectForKey:@"path"];
+	// modify the search string to make NSMetadataQuery happy
+	// "my text" should become "kMDItemTextContent == 'my text'"
+	// wildcard searches need to use LIKE instead of ==
+	NSPredicate *search = [NSPredicate predicateWithFormat:searchString];
+	NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
+	[query setPredicate:search];
+	if (path) {
+		NSURL *pathURL = [NSURL fileURLWithPath:path];
+		[query setSearchScopes:[NSArray arrayWithObject:pathURL]];
 	}
-	return nil;
+	[query startQuery];
+	// wait here until query results are available
+	CFRunLoopRun();
+	// process search results
+	NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
+	NSString *resultPath = nil;
+	// fast enumeration is not recommended for NSMetadataQuery
+	for (int i = 0; i < [query resultCount]; i++) {
+		// get the path and create a QSObject with it
+		resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
+		[objects addObject:[QSObject fileObjectWithPath:resultPath]];
+	}
+	[query release];
+	query = nil;
+	return objects;
 }
 
 - (BOOL)isVisibleSource
@@ -104,7 +94,6 @@
 - (IBAction)selectSearchPath:(NSButton *)sender
 {
 	NSMutableDictionary *settings = [self currentEntry];
-	NSLog(@"spotlight entry settings: %@", settings);
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
 	NSString *oldPath = [[settings objectForKey:kItemPath] stringByStandardizingPath];
 	if (!oldPath) {

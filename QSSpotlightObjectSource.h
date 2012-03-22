@@ -12,8 +12,6 @@
 
 @interface QSSpotlightObjectSource : QSObjectSource 
 {
-	NSMutableDictionary *pending;
 	IBOutlet NSTextField *searchPath;
-	NSMetadataQuery *query;
 }
 @end
