@@ -14,5 +14,6 @@
 {
 	NSMutableDictionary *pending;
 	IBOutlet NSTextField *searchPath;
+	NSMetadataQuery *query;
 }
 @end
