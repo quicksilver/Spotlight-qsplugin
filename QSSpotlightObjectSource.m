@@ -56,21 +56,25 @@
 		NSURL *pathURL = [NSURL fileURLWithPath:path];
 		[query setSearchScopes:[NSArray arrayWithObject:pathURL]];
 	}
-	[query startQuery];
-	// wait here until query results are available
-	CFRunLoopRun();
-	// process search results
-	NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
-	NSString *resultPath = nil;
-	// fast enumeration is not recommended for NSMetadataQuery
-	for (int i = 0; i < [query resultCount]; i++) {
-		// get the path and create a QSObject with it
-		resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
-		[objects addObject:[QSObject fileObjectWithPath:resultPath]];
+	if ([query startQuery]) {
+		// wait here until query results are available
+		CFRunLoopRun();
+		// process search results
+		NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
+		NSString *resultPath = nil;
+		// fast enumeration is not recommended for NSMetadataQuery
+		for (int i = 0; i < [query resultCount]; i++) {
+			// get the path and create a QSObject with it
+			resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
+			[objects addObject:[QSObject fileObjectWithPath:resultPath]];
+		}
+		[query release];
+		query = nil;
+		return objects;
+	} else {
+		NSLog(@"Spotlight query unable to start for '%@'", [theEntry objectForKey:kItemName]);
 	}
-	[query release];
-	query = nil;
-	return objects;
+	return nil;
 }
 
 - (BOOL)isVisibleSource
