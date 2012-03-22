@@ -46,9 +46,12 @@
 	// initiate the search
 	NSString *searchString = [theEntry objectForKey:@"query"];
 	NSString *path = [theEntry objectForKey:@"path"];
-	// modify the search string to make NSMetadataQuery happy
-	// "my text" should become "kMDItemTextContent == 'my text'"
-	// wildcard searches need to use LIKE instead of ==
+	BOOL localDiskOnly = [[theEntry objectForKey:@"ignoreRemovable"] boolValue];
+	NSMutableSet *skipPrefixes = [NSMutableSet setWithObjects:@"tmp", @"private", nil];
+	if (localDiskOnly) {
+		// don't include results from FireWire, USB, etc.
+		[skipPrefixes addObject:@"Volumes"];
+	}
 	NSPredicate *search = [NSPredicate predicateWithFormat:searchString];
 	NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
 	[query setPredicate:search];
@@ -66,6 +69,11 @@
 		for (int i = 0; i < [query resultCount]; i++) {
 			// get the path and create a QSObject with it
 			resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
+			// omit ignored paths
+			NSString *root = [[resultPath pathComponents] objectAtIndex:1];
+			if ([skipPrefixes containsObject:root]) {
+				continue;
+			}
 			[objects addObject:[QSObject fileObjectWithPath:resultPath]];
 		}
 		[query release];
