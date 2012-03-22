@@ -3,7 +3,7 @@
 //  QSSpotlightPlugIn
 //
 //  Created by Nicholas Jitkoff on 3/26/05.
-//  Updated by Rob McBroom 3/19/2012
+//  Rewritten by Rob McBroom 3/22/2012
 //
 
 #import "QSSpotlightObjectSource.h"
@@ -14,7 +14,6 @@
 {
 	self = [super init];
 	if (self != nil) {
-//		queries = [[NSMutableDictionary alloc] init];
 		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(arrayLoaded:) name:NSMetadataQueryDidFinishGatheringNotification object:nil];
 	}
 	return self;
@@ -22,7 +21,6 @@
 
 - (void)dealloc
 {
-//	[queries release];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSMetadataQueryDidFinishGatheringNotification object:nil];
 	[super dealloc];
 }
@@ -92,6 +90,7 @@
 
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry
 {
+	// no good way to tell if the results will be different, so always rescan
 	return NO;
 }
 
