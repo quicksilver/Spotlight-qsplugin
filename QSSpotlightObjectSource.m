@@ -7,7 +7,7 @@
 //
 
 #import "QSSpotlightObjectSource.h"
-#import "QSMDFindWrapper.h"
+#import "NSMetadataQuery+Synchronous.h"
 
 @implementation QSSpotlightObjectSource
 - (id)init
@@ -50,37 +50,29 @@
 		// don't include results from FireWire, USB, etc.
 		[skipPrefixes addObject:@"Volumes"];
 	}
-	NSPredicate *search = [NSPredicate predicateWithFormat:searchString];
 	NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
-	[query setPredicate:search];
 	if (path) {
-		NSURL *pathURL = [NSURL fileURLWithPath:path];
-		[query setSearchScopes:[NSArray arrayWithObject:pathURL]];
-	}
-	if ([query startQuery]) {
-		// wait here until query results are available
-		CFRunLoopRun();
-		// process search results
-		NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
-		NSString *resultPath = nil;
-		// fast enumeration is not recommended for NSMetadataQuery
-		for (int i = 0; i < [query resultCount]; i++) {
-			// get the path and create a QSObject with it
-			resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
-			// omit ignored paths
-			NSString *root = [[resultPath pathComponents] objectAtIndex:1];
-			if ([skipPrefixes containsObject:root]) {
-				continue;
-			}
-			[objects addObject:[QSObject fileObjectWithPath:resultPath]];
-		}
-		[query release];
-		query = nil;
-		return objects;
+		[query resultsForSearchString:searchString inFolders:[NSSet setWithObject:path]];
 	} else {
-		NSLog(@"Spotlight query unable to start for '%@'", [theEntry objectForKey:kItemName]);
+		[query resultsForSearchString:searchString];
 	}
-	return nil;
+	// process search results
+	NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
+	NSString *resultPath = nil;
+	// fast enumeration is not recommended for NSMetadataQuery
+	for (int i = 0; i < [query resultCount]; i++) {
+		// get the path and create a QSObject with it
+		resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
+		// omit ignored paths
+		NSString *root = [[resultPath pathComponents] objectAtIndex:1];
+		if ([skipPrefixes containsObject:root]) {
+			continue;
+		}
+		[objects addObject:[QSObject fileObjectWithPath:resultPath]];
+	}
+	[query release];
+	query = nil;
+	return objects;
 }
 
 - (BOOL)isVisibleSource
