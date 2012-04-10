@@ -21,7 +21,6 @@
 		7FD8EF4407EB586A00F57CB7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FD8EF4307EB586A00F57CB7 /* Carbon.framework */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		D4751D081517BD36009BEFBB /* QSSpotlightObjectSource.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */; };
-		D4FE34C2151CF620001F7CBE /* NSMetadataQuery+Synchronous.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FE34C1151CF620001F7CBE /* NSMetadataQuery+Synchronous.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,8 +53,6 @@
 		8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spotlight Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSSpotlightObjectSource.xib; sourceTree = "<group>"; };
 		D4AD04281517A6B30039C3A0 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
-		D4FE34C0151CF620001F7CBE /* NSMetadataQuery+Synchronous.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMetadataQuery+Synchronous.h"; sourceTree = "<group>"; };
-		D4FE34C1151CF620001F7CBE /* NSMetadataQuery+Synchronous.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMetadataQuery+Synchronous.m"; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -138,8 +135,6 @@
 		32DBCF9E0370C38000C91783 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D4FE34C0151CF620001F7CBE /* NSMetadataQuery+Synchronous.h */,
-				D4FE34C1151CF620001F7CBE /* NSMetadataQuery+Synchronous.m */,
 				7F4C3E4B082C16FC000B4D53 /* QSNSMDQueryWrapper.h */,
 				7F4C3E4C082C16FC000B4D53 /* QSNSMDQueryWrapper.m */,
 				7FD8EF3107EB574C00F57CB7 /* QSSpotlightPlugIn_Action.h */,
@@ -244,7 +239,6 @@
 				7F4894AB07F5F4EF007CB98F /* QSSpotlightObjectSource.m in Sources */,
 				7F66750007FE661D00A2CEF7 /* QSMDQueryWrapper.m in Sources */,
 				7F4C3E4D082C16FC000B4D53 /* QSNSMDQueryWrapper.m in Sources */,
-				D4FE34C2151CF620001F7CBE /* NSMetadataQuery+Synchronous.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

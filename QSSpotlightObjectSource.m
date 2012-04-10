@@ -7,7 +7,6 @@
 //
 
 #import "QSSpotlightObjectSource.h"
-#import "NSMetadataQuery+Synchronous.h"
 
 @implementation QSSpotlightObjectSource
 - (id)init
