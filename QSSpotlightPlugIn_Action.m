@@ -10,8 +10,6 @@
 #import <Carbon/Carbon.h>
 #import "QSMDFindWrapper.h"
 #import "QSNSMDQueryWrapper.h"
-
-#import <QSInterface/QSInterfaceController.h>
 // Allow us to bind to the icon of a NSMetadataItem by extending it
 
 @implementation NSMetadataItem (ItemExtras)
@@ -32,23 +30,36 @@
 
 @implementation QSSpotlightPlugIn_Action
 
-
-#define kQSSpotlightPlugInAction @"QSSpotlightPlugInAction"
-
-- (QSObject *)internalSpotlightSearchForString:(QSObject *)dObject{
-	NSString *query=[dObject stringValue];
+- (QSObject *)internalSpotlightSearchForString:(QSObject *)dObject
+{
+	NSString *queryString = [dObject stringValue];
 	
-	if ([query rangeOfString:@"kMDItem"].location==NSNotFound){
-		query=[NSString stringWithFormat:@"((kMDItemFSName = '%@*'cd)||kMDItemTextContent = '%@*'cd)",query,query];
+	if ([queryString rangeOfString:@"kMDItem"].location == NSNotFound) {
+		queryString = [NSString stringWithFormat:@"kMDItemFSName LIKE '%@*' || kMDItemTextContent LIKE '%@*'", queryString, queryString];
 	}
 	
-	
-	QSNSMDQueryWrapper *wrap=[QSNSMDQueryWrapper findWrapperWithQuery:query path:nil keepalive:NO];
-	NSMutableArray *results=[wrap results];
-	[wrap startQuery];
-	
-	QSInterfaceController *controller=[[NSApp delegate]interfaceController];
-	[controller showArray:results];
+	NSMutableArray *results = [NSMutableArray arrayWithCapacity:1];
+	NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:results, @"sourceArray", nil];
+	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+	// let the user know results are being collected
+	QSObject *searching = [QSObject makeObjectWithIdentifier:@"QSSearchPending"];
+	[searching setName:[NSString stringWithFormat:@"Searching for \"%@\"...", [dObject stringValue]]];
+	[searching setIcon:[QSResourceManager imageNamed:@"Find"]];
+	[results addObject:searching];
+	[dc postNotificationName:@"QSSourceArrayCreated" object:self userInfo:userInfo];
+	NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
+	[query resultsForSearchString:queryString];
+	[results removeObject:searching];
+	NSString *resultPath = nil;
+	// fast enumeration is not recommended for NSMetadataQuery
+	for (int i = 0; i < [query resultCount]; i++) {
+		// get the path and create a QSObject with it
+		resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
+		[results addObject:[QSObject fileObjectWithPath:resultPath]];
+	}
+	[query release];
+	query = nil;
+	[dc postNotificationName:@"QSSourceArrayUpdated" object:self userInfo:userInfo];
 	return nil;
 }
 
