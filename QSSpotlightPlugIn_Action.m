@@ -13,19 +13,25 @@
 // Allow us to bind to the icon of a NSMetadataItem by extending it
 
 @implementation NSMetadataItem (ItemExtras)
-- (NSImage *)icon {
-    NSString *path = [self valueForKey:(id)kMDItemPath];
-    return [[NSWorkspace sharedWorkspace] iconForFile:path];
+
+- (NSImage *)icon
+{
+	NSString *path = [self valueForKey:(id)kMDItemPath];
+	return [[NSWorkspace sharedWorkspace] iconForFile:path];
 }
-- (NSString *)displayName{
+
+- (NSString *)displayName
+{
 	return [self valueForAttribute:kMDItemDisplayName];
 }
-+ (NSMetadataItem *)itemWithPath:(NSString *)path{
-	MDItemRef ref=MDItemCreate(NULL,(CFStringRef)path);
-	[[[self alloc]_init:ref]autorelease];
+
++ (NSMetadataItem *)itemWithPath:(NSString *)path
+{
+	MDItemRef ref = MDItemCreate(NULL, (CFStringRef)path);
+	[[[self alloc]_init:ref] autorelease];
+	return nil;
 }
-//+ (NSArray *)itemsWithPaths:(NSArray *)paths{
-//}
+
 @end
 
 @implementation QSSpotlightPlugIn_Action
@@ -63,15 +69,17 @@
 	return nil;
 }
 
-- (QSObject *)finderSpotlightSearchForString:(QSObject *)dObject{
-	NSString *query=[dObject stringValue];
+- (QSObject *)finderSpotlightSearchForString:(QSObject *)dObject
+{
+	NSString *query = [dObject stringValue];
 	[self runQueryInFinder:[self trueQueryFor:query] name:query scope:nil];
 	return nil;
 }
 
 	
-- (QSObject *)spotlightSearchForString:(QSObject *)dObject{
-//	id item=[NSMetadataItem itemWithPath:@"/Volumes/Lore/Library/Mail/Mailboxes/2005/01.mbox/Messages/43592.emlx"];
+- (QSObject *)spotlightSearchForString:(QSObject *)dObject
+{
+//	id item = [NSMetadataItem itemWithPath:@"/Volumes/Lore/Library/Mail/Mailboxes/2005/01.mbox/Messages/43592.emlx"];
 //	NSLog(@"Value %@",[item valueForAttribute:kMDItemDisplayName]);
 	
 	OSStatus resultCode=noErr;
@@ -79,105 +87,97 @@
 	if (resultCode != noErr) {
 		// failed to open the panel
 		// present an error to the user
-    }
-    return nil;
+	}
+	return nil;
 }
 
-- (QSObject *)spotlightSearchInFolder:(QSObject *)dObject forString:(QSObject *)iObject{
-	NSString *path=[dObject singleFilePath];
-	NSString *query=[iObject stringValue];
+- (QSObject *)spotlightSearchInFolder:(QSObject *)dObject forString:(QSObject *)iObject
+{
+	NSString *path = [dObject singleFilePath];
+	NSString *query = [iObject stringValue];
 	
 	//NSLog(@"search in %@ for %@",path, query);
-	query=[NSString stringWithFormat:@"((kMDItemFSName = '%@*'cd)||kMDItemTextContent = '%@*'cd)  && (kMDItemContentType != com.apple.mail.emlx) && (kMDItemContentType != public.vcard)",query,query];
+	query = [NSString stringWithFormat:@"((kMDItemFSName = '%@*'cd)||kMDItemTextContent = '%@*'cd)  && (kMDItemContentType != com.apple.mail.emlx) && (kMDItemContentType != public.vcard)",query,query];
 	
-	QSNSMDQueryWrapper *wrap=[QSNSMDQueryWrapper findWrapperWithQuery:query path:path keepalive:NO];
-	NSMutableArray *results=[wrap results];
+	QSNSMDQueryWrapper *wrap = [QSNSMDQueryWrapper findWrapperWithQuery:query path:path keepalive:NO];
+	NSMutableArray *results = [wrap results];
 	[wrap startQuery];
 	
-	QSInterfaceController *controller=[[NSApp delegate]interfaceController];
+	QSInterfaceController *controller = [[NSApp delegate]interfaceController];
 	[controller showArray:results];
 	return nil;
 }
-- (QSObject *)spotlightSearchFinderInFolder:(QSObject *)dObject forString:(QSObject *)iObject{
-	NSString *query=[iObject stringValue];
+
+- (QSObject *)spotlightSearchFinderInFolder:(QSObject *)dObject forString:(QSObject *)iObject
+{
+	NSString *query = [iObject stringValue];
 	[self runQueryInFinder:[self trueQueryFor:query] name:query scope:[dObject singleFilePath]];
 	return nil;
 }
-- (NSString *)trueQueryFor:(NSString *)query{
-	if ([query rangeOfString:@"kMD"].location==NSNotFound)
+
+- (NSString *)trueQueryFor:(NSString *)query
+{
+	if ([query rangeOfString:@"kMD"].location==NSNotFound) {
 		return [NSString stringWithFormat:@"((kMDItemFSName = '%@*'cd)||kMDItemTextContent = '%@*'cd)  && (kMDItemContentType != com.apple.mail.emlx) && (kMDItemContentType != public.vcard)",query,query];
-	else
+	} else {
 		return query;
+	}
 }
-- (QSObject *)spotlightSearchFilenamesInFolder:(QSObject *)dObject forString:(QSObject *)iObject{
-	NSString *path=[dObject singleFilePath];
-	NSString *query=[iObject stringValue];
+
+- (QSObject *)spotlightSearchFilenamesInFolder:(QSObject *)dObject forString:(QSObject *)iObject
+{
+	NSString *path = [dObject singleFilePath];
+	NSString *query = [iObject stringValue];
 	
-	query=[NSString stringWithFormat:@"(kMDItemFSName = '%@*'cd) && (kMDItemContentType != com.apple.mail.emlx) && (kMDItemContentType != public.vcard)",query];
+	query = [NSString stringWithFormat:@"(kMDItemFSName = '%@*'cd) && (kMDItemContentType != com.apple.mail.emlx) && (kMDItemContentType != public.vcard)",query];
 	
-	QSNSMDQueryWrapper *wrap=[QSNSMDQueryWrapper findWrapperWithQuery:query path:path keepalive:NO];
-	NSMutableArray *results=[wrap results];
+	QSNSMDQueryWrapper *wrap = [QSNSMDQueryWrapper findWrapperWithQuery:query path:path keepalive:NO];
+	NSMutableArray *results = [wrap results];
 	[wrap startQuery];
 	
-	QSInterfaceController *controller=[[NSApp delegate]interfaceController];
+	QSInterfaceController *controller = [[NSApp delegate] interfaceController];
 	[controller showArray:results];
 	return nil;
 }
 
-
-
-- (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject{
-		QSObject *textObject=[QSObject textProxyObjectWithDefaultValue:@""];
-		return [NSArray arrayWithObject:textObject]; //[QSLibarrayForType:NSFilenamesPboardType];
+- (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject
+{
+	QSObject *textObject = [QSObject textProxyObjectWithDefaultValue:@""];
+	return [NSArray arrayWithObject:textObject]; //[QSLibarrayForType:NSFilenamesPboardType];
 }
 
-
-
-
-
--(void)runQueryInFinder:(NSString *)query name:(NSString *)name scope:(NSString *)scope{
-	if (!name)name=query;
-	NSMutableDictionary *dict=[NSMutableDictionary dictionary];
-	[dict setObject:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"ToolbarVisible"]
-			 forKey:@"ViewOptions"];
-	[dict setObject:[NSNumber numberWithInt:0]
-			 forKey:@"CompatibleVersion"];
-	[dict setObject:@"10.4"
-			 forKey:@"version"];
-	[dict setObject:query
-			 forKey:@"RawQuery"];
-	
-	
-	NSMutableDictionary *criteria=[NSMutableDictionary dictionary];
-	{	
-		[criteria setObject:name 								 forKey:@"AnyAttributeContains"];
-	if (scope)	[criteria setObject:[NSArray arrayWithObject:scope]		 forKey:@"FXScopeArrayOfPaths"];
+-(void)runQueryInFinder:(NSString *)query name:(NSString *)name scope:(NSString *)scope
+{
+	if (!name) {
+		name = query;
 	}
-	[dict setObject:criteria	forKey:@"SearchCriteria"];	
+	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+	[dict setObject:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"ToolbarVisible"] forKey:@"ViewOptions"];
+	[dict setObject:[NSNumber numberWithInt:0] forKey:@"CompatibleVersion"];
+	[dict setObject:@"10.4" forKey:@"version"];
+	[dict setObject:query forKey:@"RawQuery"];
 	
-	NSMutableString *filename=[[name mutableCopy]autorelease];
+	NSMutableDictionary *criteria = [NSMutableDictionary dictionary];
+	[criteria setObject:name forKey:@"AnyAttributeContains"];
+	if (scope) {
+		[criteria setObject:[NSArray arrayWithObject:scope] forKey:@"FXScopeArrayOfPaths"];
+	}
+	[dict setObject:criteria forKey:@"SearchCriteria"];
+	
+	NSMutableString *filename = [[name mutableCopy]autorelease];
 	[filename replaceOccurrencesOfString:@"/" withString:@"_" options:nil range:NSMakeRange(0,[filename length])];
-	if ([filename length]>242)
+	if ([filename length]>242) {
 		filename = (NSMutableString *)[filename substringToIndex:242];
+	}
 	[filename appendString:@".savedSearch"];
 	filename = (NSMutableString *)[NSTemporaryDirectory() stringByAppendingPathComponent:filename];
 	[dict writeToFile:filename atomically:NO];
-	[[NSFileManager defaultManager]changeFileAttributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:
-		NSFileExtensionHidden] atPath:filename];
+	[[NSFileManager defaultManager]changeFileAttributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:NSFileExtensionHidden] atPath:filename];
 	[[NSWorkspace sharedWorkspace]openTempFile:filename];
 	
 	usleep(500000);
 //	[[NSFileManager defaultManager]removeFileAtPath:filename handler:nil];
 }
-
-
-
-
-
-
-
-
-
 
 /*
 
