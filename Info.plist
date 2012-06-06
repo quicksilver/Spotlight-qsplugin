@@ -14,10 +14,12 @@
 	<string>Spotlight Module</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
-	<key>CFBundleVersion</key>
-	<string>E7</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>0.8</string>
+	<key>CFBundleVersion</key>
+	<string>E8</string>
 	<key>NSPrincipalClass</key>
 	<string>QSSpotlightPlugIn</string>
 	<key>QSActions</key>
@@ -150,6 +152,8 @@
 			<string>Spotlight in Finder</string>
 		</dict>
 	</dict>
+	<key>QSLoadImmediately</key>
+	<true/>
 	<key>QSPlugIn</key>
 	<dict>
 		<key>author</key>
@@ -230,12 +234,8 @@
 	</dict>
 	<key>QSRequirements</key>
 	<dict>
-		<key>launchLoad</key>
-		<true/>
-		<key>osVersion</key>
-		<string>8A414</string>
-		<key>qsversion</key>
-		<string>2B9E</string>
+		<key>version</key>
+		<string>3926</string>
 	</dict>
 	<key>QSResourceAdditions</key>
 	<dict>
