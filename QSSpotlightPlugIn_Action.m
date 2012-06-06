@@ -39,7 +39,7 @@
 	}
 	
 	NSMutableArray *results = [NSMutableArray arrayWithCapacity:1];
-	NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:results, @"sourceArray", nil];
+	NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:results, kQSResultArrayKey, nil];
 	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 	// let the user know results are being collected
 	QSObject *searching = [QSObject makeObjectWithIdentifier:@"QSSearchPending"];
