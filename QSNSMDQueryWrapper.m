@@ -38,7 +38,7 @@
 - (id)metadataQuery:(NSMetadataQuery *)query replacementObjectForResultObject:(NSMetadataItem *)result{
 	id object=[QSObject fileObjectWithPath:[result valueForKey:kMDItemPath]];
 	
-	float relevance=[[result valueForAttribute:NSMetadataQueryResultContentRelevanceAttribute]floatValue];
+	double relevance=[[result valueForAttribute:NSMetadataQueryResultContentRelevanceAttribute]doubleValue];
 	
 	if (relevance)
 		object=[QSRankedObject rankedObjectWithObject:object matchString:nil order:NSNotFound score:relevance];

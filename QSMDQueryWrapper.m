@@ -100,8 +100,7 @@ const void *QSObjectFromMDQueryItem(MDQueryRef query, MDItemRef item, void *cont
 	
 	NSLog(@"mdquerying %d",MDQueryExecute (mdquery,kMDQuerySynchronous));
 	NSLog(@"results %d",MDQueryGetResultCount (mdquery));
-	int i;
-	for (i=0;i<MDQueryGetResultCount(mdquery);i++){
+	for (NSUInteger i=0;i<MDQueryGetResultCount(mdquery);i++){
 		[results addObject:MDQueryGetResultAtIndex (mdquery,i)];
 	}
 	NSLog(@"results %@",MDQueryCopyValuesOfAttribute(mdquery, kMDItemPath));

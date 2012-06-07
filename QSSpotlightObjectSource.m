@@ -59,7 +59,7 @@
 	NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
 	NSString *resultPath = nil;
 	// fast enumeration is not recommended for NSMetadataQuery
-	for (int i = 0; i < [query resultCount]; i++) {
+	for (NSUInteger i = 0; i < [query resultCount]; i++) {
 		// get the path and create a QSObject with it
 		resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
 		// omit ignored paths
@@ -109,7 +109,7 @@
 	// update catalog entry
 	[settings setObject:newPath forKey:kItemPath];
 	//[settings setObject:[settings objectForKey:@"query"] forKey:kItemName];
-	[currentEntry setObject:[NSNumber numberWithFloat:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
+	[currentEntry setObject:[NSNumber numberWithDouble:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
 	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChanged object:[self currentEntry]];
 }
 
