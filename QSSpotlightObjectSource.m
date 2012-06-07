@@ -35,7 +35,7 @@
 
 - (NSImage *)iconForEntry:(NSDictionary *)theEntry
 {
-	return [QSResourceManager imageNamed:@"Spotlight"];
+	return [QSResourceManager imageNamed:@"Find"];
 }
 
 - (NSArray *)objectsForEntry:(NSDictionary *)theEntry
