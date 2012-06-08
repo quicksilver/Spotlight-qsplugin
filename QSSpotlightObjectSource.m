@@ -61,7 +61,7 @@
 	// fast enumeration is not recommended for NSMetadataQuery
 	for (NSUInteger i = 0; i < [query resultCount]; i++) {
 		// get the path and create a QSObject with it
-		resultPath = [[query resultAtIndex:i] valueForAttribute:NSMetadataItemPathKey];
+		resultPath = [[query resultAtIndex:i] valueForAttribute:@"kMDItemPath"];
 		// omit ignored paths
 		NSString *root = [[resultPath pathComponents] objectAtIndex:1];
 		if ([skipPrefixes containsObject:root]) {
