@@ -6,9 +6,6 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-
-
 @interface QSNSMDQueryWrapper : NSObject {
 	NSString *query;
 	NSString *path;
