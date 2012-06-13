@@ -39,7 +39,7 @@
 				<string>NSFilenamesPboardType</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
 			<string>Run Search with Spotlight</string>
 			<key>precedence</key>
@@ -60,9 +60,9 @@
 				<string>NSFilenamesPboardType</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight Filenames of Contents...</string>
+			<string>Spotlight Filenames Matching…</string>
 			<key>xalternateAction</key>
 			<string></string>
 		</dict>
@@ -83,9 +83,9 @@
 				<string>NSFilenamesPboardType</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight Contents...</string>
+			<string>Spotlight Contents…</string>
 		</dict>
 		<key>QSSpotlightSearchInFolderWithFinder</key>
 		<dict>
@@ -102,9 +102,9 @@
 				<string>NSFilenamesPboardType</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight Contents in Finder...</string>
+			<string>Spotlight Contents in Finder…</string>
 		</dict>
 		<key>QSSpotlightStringSearch</key>
 		<dict>
@@ -132,9 +132,9 @@
 				<string>*</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight in Command</string>
+			<string>Get Spotlight Results</string>
 		</dict>
 		<key>QSSpotlightStringSearchWithFinder</key>
 		<dict>
@@ -147,9 +147,9 @@
 				<string>*</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight in Finder</string>
+			<string>Show Spotlight Results in Finder</string>
 		</dict>
 	</dict>
 	<key>QSLoadImmediately</key>
