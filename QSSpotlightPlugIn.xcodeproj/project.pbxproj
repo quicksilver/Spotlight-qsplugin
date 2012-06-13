@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		7F24E5B207ED169300943D5A /* QSSpotlightSavedSearchSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F24E5B107ED169300943D5A /* QSSpotlightSavedSearchSource.m */; };
 		7F4894AB07F5F4EF007CB98F /* QSSpotlightObjectSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4894AA07F5F4EF007CB98F /* QSSpotlightObjectSource.m */; };
-		7F4C3E4D082C16FC000B4D53 /* QSNSMDQueryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4C3E4C082C16FC000B4D53 /* QSNSMDQueryWrapper.m */; };
-		7F66750007FE661D00A2CEF7 /* QSMDQueryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F6674FF07FE661D00A2CEF7 /* QSMDQueryWrapper.m */; };
 		7F73010E07EF87280047141E /* QSMDFindWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F73010D07EF87280047141E /* QSMDFindWrapper.m */; };
 		7F9441AE0803AA6D007EDC31 /* QSObjectSource.name.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */; };
 		7FA983D0096F0E3D00321006 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA983CC096F0E3D00321006 /* QSCore.framework */; };
@@ -35,10 +33,6 @@
 		7F24E5B107ED169300943D5A /* QSSpotlightSavedSearchSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightSavedSearchSource.m; sourceTree = "<group>"; };
 		7F4894A907F5F4EF007CB98F /* QSSpotlightObjectSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSpotlightObjectSource.h; sourceTree = "<group>"; };
 		7F4894AA07F5F4EF007CB98F /* QSSpotlightObjectSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightObjectSource.m; sourceTree = "<group>"; };
-		7F4C3E4B082C16FC000B4D53 /* QSNSMDQueryWrapper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSNSMDQueryWrapper.h; sourceTree = "<group>"; };
-		7F4C3E4C082C16FC000B4D53 /* QSNSMDQueryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSNSMDQueryWrapper.m; sourceTree = "<group>"; };
-		7F6674FE07FE661D00A2CEF7 /* QSMDQueryWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSMDQueryWrapper.h; sourceTree = "<group>"; };
-		7F6674FF07FE661D00A2CEF7 /* QSMDQueryWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSMDQueryWrapper.m; sourceTree = "<group>"; };
 		7F73010C07EF87280047141E /* QSMDFindWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSMDFindWrapper.h; sourceTree = "<group>"; };
 		7F73010D07EF87280047141E /* QSMDFindWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSMDFindWrapper.m; sourceTree = "<group>"; };
 		7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = QSObjectSource.name.strings; sourceTree = "<group>"; };
@@ -135,16 +129,12 @@
 		32DBCF9E0370C38000C91783 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7F4C3E4B082C16FC000B4D53 /* QSNSMDQueryWrapper.h */,
-				7F4C3E4C082C16FC000B4D53 /* QSNSMDQueryWrapper.m */,
 				7FD8EF3107EB574C00F57CB7 /* QSSpotlightPlugIn_Action.h */,
 				7FD8EF3207EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m */,
 				7F24E5B007ED169300943D5A /* QSSpotlightSavedSearchSource.h */,
 				7F24E5B107ED169300943D5A /* QSSpotlightSavedSearchSource.m */,
 				7F73010C07EF87280047141E /* QSMDFindWrapper.h */,
 				7F73010D07EF87280047141E /* QSMDFindWrapper.m */,
-				7F6674FE07FE661D00A2CEF7 /* QSMDQueryWrapper.h */,
-				7F6674FF07FE661D00A2CEF7 /* QSMDQueryWrapper.m */,
 				7F4894A907F5F4EF007CB98F /* QSSpotlightObjectSource.h */,
 				7F4894AA07F5F4EF007CB98F /* QSSpotlightObjectSource.m */,
 			);
@@ -237,8 +227,6 @@
 				7F24E5B207ED169300943D5A /* QSSpotlightSavedSearchSource.m in Sources */,
 				7F73010E07EF87280047141E /* QSMDFindWrapper.m in Sources */,
 				7F4894AB07F5F4EF007CB98F /* QSSpotlightObjectSource.m in Sources */,
-				7F66750007FE661D00A2CEF7 /* QSMDQueryWrapper.m in Sources */,
-				7F4C3E4D082C16FC000B4D53 /* QSNSMDQueryWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
