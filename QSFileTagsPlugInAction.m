@@ -15,6 +15,70 @@
 
 @implementation QSFileTagsPlugInAction
 
+#pragma mark - Quicksilver Actions
+
+- (QSObject *)addTagsForFile:(QSObject *)dObject tags:(QSObject *)iObject {
+	NSArray *newTags = [[iObject stringValue] componentsSeparatedByString:@" "];
+	newTags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByAddingTagPrefix:) onObjectsInArray:newTags returnValues:YES];
+	[self tagFiles:[dObject validPaths] add:newTags remove:nil set:nil];
+	return nil;
+}
+
+- (QSObject *)removeTagsForFile:(QSObject *)dObject tags:(QSObject *)iObject {
+	NSArray *newTags = [[iObject stringValue] componentsSeparatedByString:@" "];
+	newTags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByAddingTagPrefix:) onObjectsInArray:newTags returnValues:YES];
+	[self tagFiles:[dObject validPaths] add:nil remove:newTags set:nil];
+	return nil;
+}
+
+- (QSObject *)setTagsForFile:(QSObject *)dObject tags:(QSObject *)iObject {
+	NSArray *newTags = [[iObject stringValue] componentsSeparatedByString:@" "];
+	newTags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByAddingTagPrefix:) onObjectsInArray:newTags returnValues:YES];
+	[self tagFiles:[dObject validPaths] add:nil remove:nil set:newTags];
+	return nil;
+}
+
+- (QSObject *)showWindowForTag:(QSObject *)dObject {
+//	NSString *string = [dObject stringValue];
+	
+	return nil;
+}
+
+- (QSObject *)showTags:(QSObject *)dObject {
+	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+	NSString *comment = [ws commentForFile:[dObject singleFilePath]];
+	NSArray *tags = [self tagsFromString:comment];
+	NSArray *tagObjects = [self performSelector:@selector(objectForTag:) onObjectsInArray:tags returnValues:YES];
+	[[QSReg preferredCommandInterface] showArray:tagObjects];
+	return nil;
+}
+
+- (QSObject *)showTaggedFilesInFinder:(QSObject *)dObject {
+	NSString *string = [[QSMDTagsQueryManager sharedInstance] stringByAddingTagPrefix:[dObject stringValue]];
+	
+	NSArray *slices = [NSArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Othr", @"FXSliceKind", @"kMDItemFinderComment", @"FXAttribute", string, @"Value", @"S:**", @"Operator", nil]];
+	NSString *name = [NSString stringWithFormat:@" {%@} ", string];
+	NSString *query = [NSString stringWithFormat:@"(kMDItemFinderComment = '%@'cdw) ", string];
+	//	NSLog(@"SPURL: %@ - %@", scheme, query);
+	
+	[self runQuery:query withName:name slices:slices];
+	return nil; 	
+}
+
+#pragma mark - Quicksilver Validation
+
+- (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject {
+	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
+	NSString *comment = [ws commentForFile:[dObject singleFilePath]];
+	NSArray *tags = [self tagsFromString:comment];
+	tags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByRemovingTagPrefix:) onObjectsInArray:tags returnValues:YES];
+	
+	QSObject *textObject = [QSObject textProxyObjectWithDefaultValue:[tags componentsJoinedByString:@" "]];
+	return [NSArray arrayWithObject:textObject]; //[QSLibarrayForType:NSFilenamesPboardType];
+}
+
+#pragma mark - Helper Methods
+
 - (NSArray *)tagsFromString:(NSString *)string {
 	NSArray *tags = [string componentsSeparatedByString:@" "];
 	NSMutableArray *realTags = [NSMutableArray array];
@@ -55,57 +119,11 @@
 	while(path = [e nextObject]) {
 		NSString *comment = [ws commentForFile:path];
 		comment = [self string:comment byAddingTags:add removingTags:remove settingTags:set];
-	//	NSLog(@"newcomm %@", comment);
+		//	NSLog(@"newcomm %@", comment);
 		[ws setComment:comment forFile:path];
 	}
 	return;
 	
-}
-
-- (QSObject *)addTagsForFile:(QSObject *)dObject tags:(QSObject *)iObject {
-	NSArray *newTags = [[iObject stringValue] componentsSeparatedByString:@" "];
-	newTags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByAddingTagPrefix:) onObjectsInArray:newTags returnValues:YES];
-	[self tagFiles:[dObject validPaths] add:newTags remove:nil set:nil];
-	return nil;
-}
-
-- (QSObject *)removeTagsForFile:(QSObject *)dObject tags:(QSObject *)iObject {
-	NSArray *newTags = [[iObject stringValue] componentsSeparatedByString:@" "];
-	newTags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByAddingTagPrefix:) onObjectsInArray:newTags returnValues:YES];
-	[self tagFiles:[dObject validPaths] add:nil remove:newTags set:nil];
-	return nil;
-}
-
-- (QSObject *)setTagsForFile:(QSObject *)dObject tags:(QSObject *)iObject {
-	NSArray *newTags = [[iObject stringValue] componentsSeparatedByString:@" "];
-	newTags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByAddingTagPrefix:) onObjectsInArray:newTags returnValues:YES];
-	[self tagFiles:[dObject validPaths] add:nil remove:nil set:newTags];
-	return nil;
-}
-
-- (QSObject *)showWindowForTag:(QSObject *)dObject {
-//	NSString *string = [dObject stringValue];
-	
-	return nil;
-}
-
-- (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject {
-	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	NSString *comment = [ws commentForFile:[dObject singleFilePath]];
-	NSArray *tags = [self tagsFromString:comment];
-	tags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByRemovingTagPrefix:) onObjectsInArray:tags returnValues:YES];
-	
-	QSObject *textObject = [QSObject textProxyObjectWithDefaultValue:[tags componentsJoinedByString:@" "]];
-	return [NSArray arrayWithObject:textObject]; //[QSLibarrayForType:NSFilenamesPboardType];
-}
-
-- (QSObject *)showTags:(QSObject *)dObject {
-	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	NSString *comment = [ws commentForFile:[dObject singleFilePath]];
-	NSArray *tags = [self tagsFromString:comment];
-	NSArray *tagObjects = [self performSelector:@selector(objectForTag:) onObjectsInArray:tags returnValues:YES];
-	[[QSReg preferredCommandInterface] showArray:tagObjects];
-	return nil;
 }
 
 - (QSObject *)objectForTag:(NSString *)tag {
@@ -132,7 +150,7 @@
 	else
 		[dict setObject:@"10.4"
                  forKey:@"version"];
-        [dict setObject:trueQuery
+	[dict setObject:trueQuery
 			 forKey:@"RawQuery"];
     
 	if ((Gestalt(gestaltSystemVersion, &macVer) == noErr) && (((macVer >> 4) & 0xF) > 4)) {
@@ -168,18 +186,6 @@
 	
 	usleep(500000);
 	//[[NSFileManager defaultManager] removeFileAtPath:filename handler:nil];
-}
-
-- (QSObject *)showTaggedFilesInFinder:(QSObject *)dObject {
-	NSString *string = [[QSMDTagsQueryManager sharedInstance] stringByAddingTagPrefix:[dObject stringValue]];
-	
-	NSArray *slices = [NSArray arrayWithObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Othr", @"FXSliceKind", @"kMDItemFinderComment", @"FXAttribute", string, @"Value", @"S:**", @"Operator", nil]];
-	NSString *name = [NSString stringWithFormat:@" {%@} ", string];
-	NSString *query = [NSString stringWithFormat:@"(kMDItemFinderComment = '%@'cdw) ", string];
-	//	NSLog(@"SPURL: %@ - %@", scheme, query);
-	
-	[self runQuery:query withName:name slices:slices];
-	return nil; 	
 }
 
 @end
