@@ -19,6 +19,11 @@
 		7FD8EF4407EB586A00F57CB7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FD8EF4307EB586A00F57CB7 /* Carbon.framework */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		D4751D081517BD36009BEFBB /* QSSpotlightObjectSource.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */; };
+		D4B2F6C9158A66AC00A03A68 /* QSFileTagsPlugInAction.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B2F6C4158A66AC00A03A68 /* QSFileTagsPlugInAction.m */; };
+		D4B2F6CA158A66AC00A03A68 /* QSFileTagsPlugInSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B2F6C6158A66AC00A03A68 /* QSFileTagsPlugInSource.m */; };
+		D4B2F6CB158A66AC00A03A68 /* QSMDTagsQueryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B2F6C8158A66AC00A03A68 /* QSMDTagsQueryManager.m */; };
+		D4B2F6CF158A66BF00A03A68 /* Tag.png in Resources */ = {isa = PBXBuildFile; fileRef = D4B2F6CD158A66BF00A03A68 /* Tag.png */; };
+		D4B2F6D1158A676B00A03A68 /* QSFileTagsPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B2F6D0158A676B00A03A68 /* QSFileTagsPrefPane.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +52,14 @@
 		8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spotlight Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSSpotlightObjectSource.xib; sourceTree = "<group>"; };
 		D4AD04281517A6B30039C3A0 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
+		D4B2F6C3158A66AC00A03A68 /* QSFileTagsPlugInAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSFileTagsPlugInAction.h; sourceTree = "<group>"; };
+		D4B2F6C4158A66AC00A03A68 /* QSFileTagsPlugInAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSFileTagsPlugInAction.m; sourceTree = "<group>"; };
+		D4B2F6C5158A66AC00A03A68 /* QSFileTagsPlugInSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSFileTagsPlugInSource.h; sourceTree = "<group>"; };
+		D4B2F6C6158A66AC00A03A68 /* QSFileTagsPlugInSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSFileTagsPlugInSource.m; sourceTree = "<group>"; };
+		D4B2F6C7158A66AC00A03A68 /* QSMDTagsQueryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSMDTagsQueryManager.h; sourceTree = "<group>"; };
+		D4B2F6C8158A66AC00A03A68 /* QSMDTagsQueryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSMDTagsQueryManager.m; sourceTree = "<group>"; };
+		D4B2F6CD158A66BF00A03A68 /* Tag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tag.png; sourceTree = "<group>"; };
+		D4B2F6D0158A676B00A03A68 /* QSFileTagsPrefPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSFileTagsPrefPane.xib; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -85,6 +98,8 @@
 				D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
 				7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */,
+				D4B2F6D0158A676B00A03A68 /* QSFileTagsPrefPane.xib */,
+				D4B2F6CD158A66BF00A03A68 /* Tag.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -137,6 +152,12 @@
 				7F73010D07EF87280047141E /* QSMDFindWrapper.m */,
 				7F4894A907F5F4EF007CB98F /* QSSpotlightObjectSource.h */,
 				7F4894AA07F5F4EF007CB98F /* QSSpotlightObjectSource.m */,
+				D4B2F6C3158A66AC00A03A68 /* QSFileTagsPlugInAction.h */,
+				D4B2F6C4158A66AC00A03A68 /* QSFileTagsPlugInAction.m */,
+				D4B2F6C5158A66AC00A03A68 /* QSFileTagsPlugInSource.h */,
+				D4B2F6C6158A66AC00A03A68 /* QSFileTagsPlugInSource.m */,
+				D4B2F6C7158A66AC00A03A68 /* QSMDTagsQueryManager.h */,
+				D4B2F6C8158A66AC00A03A68 /* QSMDTagsQueryManager.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -197,6 +218,8 @@
 			files = (
 				7F9441AE0803AA6D007EDC31 /* QSObjectSource.name.strings in Resources */,
 				D4751D081517BD36009BEFBB /* QSSpotlightObjectSource.xib in Resources */,
+				D4B2F6CF158A66BF00A03A68 /* Tag.png in Resources */,
+				D4B2F6D1158A676B00A03A68 /* QSFileTagsPrefPane.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +250,9 @@
 				7F24E5B207ED169300943D5A /* QSSpotlightSavedSearchSource.m in Sources */,
 				7F73010E07EF87280047141E /* QSMDFindWrapper.m in Sources */,
 				7F4894AB07F5F4EF007CB98F /* QSSpotlightObjectSource.m in Sources */,
+				D4B2F6C9158A66AC00A03A68 /* QSFileTagsPlugInAction.m in Sources */,
+				D4B2F6CA158A66AC00A03A68 /* QSFileTagsPlugInSource.m in Sources */,
+				D4B2F6CB158A66AC00A03A68 /* QSMDTagsQueryManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

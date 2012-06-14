@@ -19,11 +19,88 @@
 	<key>CFBundleSignature</key>
 	<string>0.8</string>
 	<key>CFBundleVersion</key>
-	<string>E8</string>
+	<string>EB</string>
 	<key>NSPrincipalClass</key>
 	<string>QSSpotlightPlugIn</string>
 	<key>QSActions</key>
 	<dict>
+		<key>QSAddFileTagsAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>addTagsForFile:tags:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Add Tags...</string>
+		</dict>
+		<key>QSRemoveFileTagsAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>removeTagsForFile:tags:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Remove Tags...</string>
+		</dict>
+		<key>QSSetFileTagsAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>setTagsForFile:tags:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Set Tags...</string>
+		</dict>
+		<key>QSShowFileTagsAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>showTags:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Show Tags</string>
+		</dict>
+		<key>QSShowTaggedFilesAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>showTaggedFilesInFinder:</string>
+			<key>directTypes</key>
+			<array>
+				<string>qs.tag.file</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Show Files Matching Tag</string>
+			<key>precedence</key>
+			<integer>3</integer>
+		</dict>
 		<key>QSSpotlightRunSavedQuery</key>
 		<dict>
 			<key>actionClass</key>
@@ -53,7 +130,7 @@
 			<string>spotlightSearchFilenamesInFolder:forString:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>&apos;fold&apos;</string>
+				<string>'fold'</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -76,7 +153,7 @@
 			<string>QSSpotlightSearchInFolderWithFinder</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>&apos;fold&apos;</string>
+				<string>'fold'</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -95,7 +172,7 @@
 			<string>spotlightSearchFinderInFolder:forString:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>&apos;fold&apos;</string>
+				<string>'fold'</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -157,10 +234,11 @@
 	<key>QSPlugIn</key>
 	<dict>
 		<key>author</key>
-		<string>Blacktree, Inc.</string>
+		<string>Rob McBroom</string>
 		<key>categories</key>
 		<array>
 			<string>Search</string>
+			<string>Files</string>
 		</array>
 		<key>description</key>
 		<string>Spotlight actions and integration</string>
@@ -178,7 +256,7 @@
 
 &lt;/ul&gt;</string>
 		<key>icon</key>
-		<string>Spotlight</string>
+		<string>Find</string>
 		<key>relatedBundles </key>
 		<array/>
 	</dict>
@@ -186,36 +264,61 @@
 	<array>
 		<dict>
 			<key>ID</key>
-			<string>QSPresetSpotlightSavedSearches</string>
-			<key>enabled</key>
-			<true/>
+			<string>QSPresetSpotlightGroup</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetSpotlightSavedSearches</string>
+					<key>enabled</key>
+					<true/>
+					<key>icon</key>
+					<string>Find</string>
+					<key>name</key>
+					<string>Saved Searches</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>savedSearch</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Library/Saved Searches</string>
+						<key>skipItem</key>
+						<true/>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetQSFileTagsPlugIn</string>
+					<key>icon</key>
+					<string>Tag</string>
+					<key>name</key>
+					<string>File Tags</string>
+					<key>source</key>
+					<string>QSFileTagsPlugInSource</string>
+				</dict>
+			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight Saved Searches</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>folderTypes</key>
-				<array>
-					<string>savedSearch</string>
-				</array>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Library/Saved Searches</string>
-				<key>skipItem</key>
-				<true/>
-			</dict>
+			<string>Spotlight</string>
 			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
+			<string>QSGroupObjectSource</string>
 		</dict>
 	</array>
 	<key>QSRegistration</key>
 	<dict>
 		<key>QSActionProviders</key>
 		<dict>
+			<key>QSFileTagsPlugInAction</key>
+			<string>QSFileTagsPlugInAction</string>
 			<key>QSSpotlightPlugIn_Action</key>
 			<string>QSSpotlightPlugIn_Action</string>
 			<key>QSSpotlightSavedSearchSource</key>
@@ -226,16 +329,55 @@
 			<key>com.apple.finder.smart-folder</key>
 			<string>QSSpotlightSavedSearchSource</string>
 		</dict>
+		<key>QSObjectHandlers</key>
+		<dict>
+			<key>qs.tag.file</key>
+			<string>QSFileTagsPlugInSource</string>
+		</dict>
 		<key>QSObjectSources</key>
 		<dict>
+			<key>QSFileTagsPlugInSource</key>
+			<string>QSFileTagsPlugInSource</string>
 			<key>QSSpotlightObjectSource</key>
 			<string>QSSpotlightObjectSource</string>
+		</dict>
+		<key>QSPreferencePanes</key>
+		<dict>
+			<key>QSFileTagsPrefPane</key>
+			<dict>
+				<key>class</key>
+				<string>QSPreferencePane</string>
+				<key>description</key>
+				<string>File Tagging Options</string>
+				<key>icon</key>
+				<string>Tag</string>
+				<key>name</key>
+				<string>Tags</string>
+				<key>nibBundle</key>
+				<string>com.blacktree.Quicksilver.QSSpotlightPlugIn</string>
+				<key>nibName</key>
+				<string>QSFileTagsPrefPane</string>
+			</dict>
 		</dict>
 	</dict>
 	<key>QSRequirements</key>
 	<dict>
+		<key>obsoletes</key>
+		<array>
+			<string>com.blacktree.Quicksilver.QSFileTagsPlugIn</string>
+		</array>
 		<key>version</key>
 		<string>3926</string>
+	</dict>
+	<key>QSResourceAdditions</key>
+	<dict>
+		<key>Tag</key>
+		<dict>
+			<key>bundle</key>
+			<string>com.blacktree.Quicksilver.QSSpotlightPlugIn</string>
+			<key>resource</key>
+			<string>Tag.png</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
