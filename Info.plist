@@ -273,7 +273,7 @@
 					<key>enabled</key>
 					<true/>
 					<key>icon</key>
-					<string>Find</string>
+					<string>SmartFolderIcon</string>
 					<key>name</key>
 					<string>Saved Searches</string>
 					<key>settings</key>
