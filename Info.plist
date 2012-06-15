@@ -5,13 +5,13 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Spotlight Module</string>
+	<string>Spotlight Plugin</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.blacktree.Quicksilver.QSSpotlightPlugIn</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Spotlight Module</string>
+	<string>Spotlight Plugin</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>

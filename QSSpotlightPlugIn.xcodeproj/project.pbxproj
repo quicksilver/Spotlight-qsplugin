@@ -264,7 +264,7 @@
 			baseConfigurationReference = 1483E54410D0F139009F139A /* QSPlugIn_Debug.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = "Spotlight Module";
+				PRODUCT_NAME = "Spotlight Plugin";
 				ZERO_LINK = YES;
 			};
 			name = Debug;
@@ -274,7 +274,7 @@
 			baseConfigurationReference = 1483E54610D0F139009F139A /* QSPlugIn_Release.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = "Spotlight Module";
+				PRODUCT_NAME = "Spotlight Plugin";
 				ZERO_LINK = NO;
 			};
 			name = Release;
