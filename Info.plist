@@ -101,27 +101,6 @@
 			<key>precedence</key>
 			<integer>3</integer>
 		</dict>
-		<key>QSSpotlightRunSavedQuery</key>
-		<dict>
-			<key>actionClass</key>
-			<string>QSSpotlightSavedSearchSource</string>
-			<key>actionSelector</key>
-			<string>spotlightRunSavedQuery:</string>
-			<key>directFileTypes</key>
-			<array>
-				<string>savedSearch</string>
-			</array>
-			<key>directTypes</key>
-			<array>
-				<string>NSFilenamesPboardType</string>
-			</array>
-			<key>icon</key>
-			<string>Find</string>
-			<key>name</key>
-			<string>Run Search with Spotlight</string>
-			<key>precedence</key>
-			<integer>5</integer>
-		</dict>
 		<key>QSSpotlightSearchFilenamesInFolder</key>
 		<dict>
 			<key>actionClass</key>
@@ -227,6 +206,30 @@
 			<string>Find</string>
 			<key>name</key>
 			<string>Show Spotlight Results in Finder</string>
+		</dict>
+	</dict>
+	<key>QSActionsDisabled</key>
+	<dict>
+		<key>QSSpotlightRunSavedQuery</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSSpotlightSavedSearchSource</string>
+			<key>actionSelector</key>
+			<string>spotlightRunSavedQuery:</string>
+			<key>directFileTypes</key>
+			<array>
+				<string>savedSearch</string>
+			</array>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Find</string>
+			<key>name</key>
+			<string>Run Search with Spotlight</string>
+			<key>precedence</key>
+			<integer>5</integer>
 		</dict>
 	</dict>
 	<key>QSLoadImmediately</key>
