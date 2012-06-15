@@ -22,22 +22,7 @@
     return [QSResourceManager imageNamed:@"Tag"];
 }
 
-- (NSString *)identifierForObject:(id <QSObject>)object {
-    return nil;
-}
-
-- (void)tagQueryDidUpdate:(NSString*)tagPrefix {
-    [self invalidateSelf];
-}
-
 - (NSArray *)objectsForEntry:(NSDictionary *)theEntry {
-#ifdef DEBUG
-    if (![[QSMDTagsQueryManager sharedInstance] isScanningForTagPrefix:gTagPrefix]) {
-        if (![[QSMDTagsQueryManager sharedInstance] startScanningForTagPrefix:gTagPrefix delegate:self])
-            NSLog(@"%@ %@: failed starting scan for %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), gTagPrefix);
-    }
-#endif
-    
     NSMutableArray *objects = nil;
     NSArray *tags = [[QSMDTagsQueryManager sharedInstance] tagsWithTagPrefix:gTagPrefix];
 	if ([tags count] != 0) {        
