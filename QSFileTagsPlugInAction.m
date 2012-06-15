@@ -141,19 +141,10 @@
 			 forKey:@"ViewOptions"];
 	[dict setObject:[NSNumber numberWithInt:0]
 			 forKey:@"CompatibleVersion"];
-	SInt32 macVer;
-	if (Gestalt(gestaltSystemVersion, &macVer) == noErr) {
-		NSString* version = [NSString stringWithFormat:@"10.%x",((macVer >> 4) & 0xF)];
-		[dict setObject:version
-                 forKey:@"version"];
-	}
-	else
-		[dict setObject:@"10.4"
-                 forKey:@"version"];
 	[dict setObject:trueQuery
 			 forKey:@"RawQuery"];
     
-	if ((Gestalt(gestaltSystemVersion, &macVer) == noErr) && (((macVer >> 4) & 0xF) > 4)) {
+	if ([NSApplication isLeopard]) {
 		// Saved searches seem to now require an array of paths to search.  Current code uses root as the path.
 		[dict setObject:[NSDictionary dictionaryWithObjectsAndKeys:
                          //query, @"AnyAttributeContains",

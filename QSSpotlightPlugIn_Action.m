@@ -124,7 +124,7 @@
 	query = [self savedSearchQueryFor:query];
 	NSMutableDictionary *dict = [NSMutableDictionary dictionary];
 	[dict setObject:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO] forKey:@"ToolbarVisible"] forKey:@"ViewOptions"];
-	[dict setObject:[NSNumber numberWithInt:0] forKey:@"CompatibleVersion"];
+	[dict setObject:[NSNumber numberWithInteger:0] forKey:@"CompatibleVersion"];
 	[dict setObject:query forKey:@"RawQuery"];
 	
 	NSMutableDictionary *criteria = [NSMutableDictionary dictionary];
