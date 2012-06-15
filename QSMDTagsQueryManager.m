@@ -95,12 +95,11 @@ static QSMDTagsQueryManager *defaultQueryManager = nil;
 
 - (NSArray *)tagsFromQuery:(NSMetadataQuery *)aQuery {	
 	NSMutableSet *set = [NSMutableSet set];
-	NSString *prefix = [self tagPrefixForQuery:aQuery];
 	NSEnumerator *commentEnum = [[[aQuery results] valueForKey:(NSString *)kMDItemFinderComment] objectEnumerator];
 	NSString *comment;
 	while(comment = [commentEnum nextObject]) {
 		for(NSString * word in [comment componentsSeparatedByString:@" "]) {
-			if ([word hasPrefix:prefix])
+			if ([word hasPrefix:gTagPrefix])
 				[set addObject:word];
 		}
 	}
@@ -190,28 +189,26 @@ static QSMDTagsQueryManager *defaultQueryManager = nil;
 }
 
 - (NSArray*)tagsWithTagPrefix:(NSString*)tagPrefix {
-    NSMetadataQuery *query = [self queryForTagPrefix:tagPrefix create:NO];
-    if (!query)
-        return nil;
+    NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
     NSArray *objects = nil;
-    [query disableUpdates];
+	NSString *string = [NSString stringWithFormat:@"kMDItemFinderComment LIKE[cd] '*%@*'", tagPrefix];
+    [query resultsForSearchString:string];
     if ([query resultCount] != 0) {
         objects = [self tagsFromQuery:query];
     }
-    [query enableUpdates];
+    [query release];
     return objects;
 }
 
 - (NSArray*)filesForTag:(NSString*)tag {
-    NSMetadataQuery *query = [self queryForTagPrefix:[self tagPrefixForTag:tag] create:NO];
-    if (!query)
-        return nil;
+    NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
     NSArray *objects = nil;
-    [query disableUpdates];
+	NSString *string = [NSString stringWithFormat:@"kMDItemFinderComment LIKE[cd] '*%@*'", tag];
+    [query resultsForSearchString:string];
     if ([query resultCount] != 0) {
         objects = [self filesWithTag:tag fromQuery:query];
     }
-    [query enableUpdates];
+    [query release];
     return objects;
 }
 
