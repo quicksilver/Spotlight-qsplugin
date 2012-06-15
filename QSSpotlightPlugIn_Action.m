@@ -98,7 +98,7 @@
 {
 	if ([query rangeOfString:@"kMD"].location == NSNotFound) {
 		// turn simple string into a query (NSPredicate style)
-		return [NSString stringWithFormat:@"kMDItemFSName LIKE[cd] '%@*' || kMDItemTextContent LIKE[cd] '%@*'", query, query];
+		return [NSString stringWithFormat:@"kMDItemFSName LIKE[cd] '%@*' || kMDItemFinderComment LIKE[cd] '*%@*' || kMDItemTextContent LIKE[cd] '%@*'", query, query, query];
 	} else {
 		// this is a Spotlight query - pass it along untouched
 		return query;
