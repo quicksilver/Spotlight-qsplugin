@@ -27,7 +27,7 @@ Uses search text to create and display a Smart Folder.
 
 #### Spotlight in Window ####
 
-Opens a Finder window with the search text pre-populated.
+Opens a Finder window with the search text pre-populated. The main advantage to this action is that it allows you to use the search syntax most users are familiar with.
 
 #### Spotlight Contents… ####
 
