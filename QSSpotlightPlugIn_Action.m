@@ -159,14 +159,27 @@
 	[results addObject:searching];
 	[dc postNotificationName:@"QSSourceArrayCreated" object:self userInfo:userInfo];
 	NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
-	[query resultsForSearchString:queryString inFolders:scope];
 	[results removeObject:searching];
-	NSString *resultPath = nil;
-	// fast enumeration is not recommended for NSMetadataQuery
-	for (NSUInteger i = 0; i < [query resultCount]; i++) {
-		// get the path and create a QSObject with it
-		resultPath = [[query resultAtIndex:i] valueForAttribute:@"kMDItemPath"];
-		[results addObject:[QSObject fileObjectWithPath:resultPath]];
+	@try {
+		[query resultsForSearchString:queryString inFolders:scope];
+		NSString *resultPath = nil;
+		// fast enumeration is not recommended for NSMetadataQuery
+		for (NSUInteger i = 0; i < [query resultCount]; i++) {
+			// get the path and create a QSObject with it
+			resultPath = [[query resultAtIndex:i] valueForAttribute:@"kMDItemPath"];
+			[results addObject:[QSObject fileObjectWithPath:resultPath]];
+		}
+	}
+	@catch (NSException *exception) {
+		if ([[exception name] isEqualToString:@"NSInvalidArgumentException"]) {
+			NSLog(@"invalid syntax for Spotlight search: %@", queryString);
+			QSObject *error = [QSObject objectWithString:@"Search Failed"];
+			[error setDetails:[NSString stringWithFormat:@"Invalid syntax: %@", queryString]];
+			[error setIcon:[QSResourceManager imageNamed:@"AlertStopIcon"]];
+			[results addObject:error];
+		} else {
+			NSLog(@"Spotlight search failed: %@", exception);
+		}
 	}
 	[query release];
 	query = nil;

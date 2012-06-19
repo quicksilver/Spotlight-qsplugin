@@ -50,24 +50,33 @@
 		[skipPrefixes addObject:@"Volumes"];
 	}
 	NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
-	if (path) {
-		[query resultsForSearchString:searchString inFolders:[NSSet setWithObject:path]];
-	} else {
-		[query resultsForSearchString:searchString];
-	}
-	// process search results
-	NSMutableArray *objects = [NSMutableArray arrayWithCapacity:1];
-	NSString *resultPath = nil;
-	// fast enumeration is not recommended for NSMetadataQuery
-	for (NSUInteger i = 0; i < [query resultCount]; i++) {
-		// get the path and create a QSObject with it
-		resultPath = [[query resultAtIndex:i] valueForAttribute:@"kMDItemPath"];
-		// omit ignored paths
-		NSString *root = [[resultPath pathComponents] objectAtIndex:1];
-		if ([skipPrefixes containsObject:root]) {
-			continue;
+	NSMutableArray *objects = [NSMutableArray array];
+	@try {
+		if (path) {
+			[query resultsForSearchString:searchString inFolders:[NSSet setWithObject:path]];
+		} else {
+			[query resultsForSearchString:searchString];
 		}
-		[objects addObject:[QSObject fileObjectWithPath:resultPath]];
+		// process search results
+		NSString *resultPath = nil;
+		// fast enumeration is not recommended for NSMetadataQuery
+		for (NSUInteger i = 0; i < [query resultCount]; i++) {
+			// get the path and create a QSObject with it
+			resultPath = [[query resultAtIndex:i] valueForAttribute:@"kMDItemPath"];
+			// omit ignored paths
+			NSString *root = [[resultPath pathComponents] objectAtIndex:1];
+			if ([skipPrefixes containsObject:root]) {
+				continue;
+			}
+			[objects addObject:[QSObject fileObjectWithPath:resultPath]];
+		}
+	}
+	@catch (NSException *exception) {
+		if ([[exception name] isEqualToString:@"NSInvalidArgumentException"]) {
+			NSLog(@"invalid syntax for Spotlight catalog entry: %@", searchString);
+		} else {
+			NSLog(@"Spotlight catalog entry failed: %@", exception);
+		}
 	}
 	[query release];
 	query = nil;
