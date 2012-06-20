@@ -85,7 +85,6 @@
 
 - (NSArray *)tagsFromString:(NSString *)string {
 	NSArray *tags = [string componentsSeparatedByString:@" "];
-	NSLog(@"Spotlight comment split: %@", tags);
 	NSMutableSet *realTags = [NSMutableSet set];
 	for (NSString *tag in tags) {
         if ([[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:tag]) {
