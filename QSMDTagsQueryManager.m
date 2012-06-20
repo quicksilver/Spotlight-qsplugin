@@ -101,9 +101,11 @@ static QSMDTagsQueryManager *defaultQueryManager = nil;
 
 - (NSString *)stringByRemovingTagPrefix:(NSString *)tag {
     NSString *string = tag;
-	if ([tag hasPrefix:gTagPrefix])
+	if ([tag hasPrefix:gTagPrefix]) {
 		string = [tag substringFromIndex:[gTagPrefix length]];
-	return string;
+		return string;
+	}
+	return nil;
 }
 
 @end
