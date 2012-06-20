@@ -49,7 +49,7 @@
 		7FD8EF3207EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightPlugIn_Action.m; sourceTree = "<group>"; };
 		7FD8EF4307EB586A00F57CB7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spotlight Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Spotlight Module.qsplugin"; path = "Spotlight Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSSpotlightObjectSource.xib; sourceTree = "<group>"; };
 		D4AD04281517A6B30039C3A0 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
 		D4B2F6C3158A66AC00A03A68 /* QSFileTagsPlugInAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSFileTagsPlugInAction.h; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		0259C573FE90428111CA0C5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 7FFF2559085E488700266176 /* Build configuration list for PBXProject "QSSpotlightPlugIn" */;
 			compatibilityVersion = "Xcode 3.2";

@@ -112,8 +112,9 @@
 	}
 	[openPanel setCanChooseDirectories:YES];
 	[openPanel setCanChooseFiles:NO];
-	if (![openPanel runModalForDirectory:[oldPath stringByDeletingLastPathComponent] file:[oldPath lastPathComponent] types:nil]) return;
-	NSString *newPath = [openPanel filename];
+	[openPanel setDirectoryURL:[NSURL fileURLWithPath:oldPath]];
+	if (![openPanel runModal]) return;
+	NSString *newPath = [[openPanel URL] path];
 	[searchPath setStringValue:[newPath stringByAbbreviatingWithTildeInPath]];
 	// update catalog entry
 	[settings setObject:newPath forKey:kItemPath];

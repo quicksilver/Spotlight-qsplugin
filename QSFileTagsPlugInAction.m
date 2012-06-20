@@ -6,8 +6,6 @@
 //  Copyright __MyCompanyName__ 2005. All rights reserved.
 //
 
-#import <QSCore/QSTextProxy.h>
-
 #import "QSMDTagsQueryManager.h"
 #import "QSFileTagsPlugInAction.h"
 
@@ -48,8 +46,9 @@
 	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
 	NSString *comment = [ws commentForFile:[dObject singleFilePath]];
 	NSArray *tags = [self tagsFromString:comment];
-	NSArray *tagObjects = [self performSelector:@selector(objectForTag:) onObjectsInArray:tags returnValues:YES];
-	[[QSReg preferredCommandInterface] showArray:tagObjects];
+	NSMutableArray *tagObjects = [self performSelector:@selector(objectForTag:) onObjectsInArray:tags returnValues:YES];
+	NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:tagObjects, kQSResultArrayKey, nil];
+	[[NSNotificationCenter defaultCenter] postNotificationName:@"QSSourceArrayCreated" object:self userInfo:userInfo];
 	return nil;
 }
 
@@ -113,10 +112,8 @@
 }
 
 - (void)tagFiles:(NSArray *)paths add:(NSArray *)add remove:(NSArray *)remove set:(NSArray *)set {
-	NSEnumerator *e = [paths objectEnumerator];
-	NSString *path;
 	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
-	while(path = [e nextObject]) {
+	for (NSString *path in paths) {
 		NSString *comment = [ws commentForFile:path];
 		comment = [self string:comment byAddingTags:add removingTags:remove settingTags:set];
 		//	NSLog(@"newcomm %@", comment);
@@ -171,12 +168,9 @@
 	[filename appendString:@".savedSearch"];
 	filename = (NSMutableString*)[NSTemporaryDirectory() stringByAppendingPathComponent:filename];
 	[dict writeToFile:filename atomically:NO];
-	[[NSFileManager defaultManager] changeFileAttributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:
-                                                          NSFileExtensionHidden] atPath:filename];
-	[[NSWorkspace sharedWorkspace] openTempFile:filename];
-	
-	usleep(500000);
-	//[[NSFileManager defaultManager] removeFileAtPath:filename handler:nil];
+	[[NSFileManager defaultManager] setAttributes:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:
+                                                          NSFileExtensionHidden] ofItemAtPath:filename error:nil];
+	[[NSWorkspace sharedWorkspace] openFile:filename];
 }
 
 @end
