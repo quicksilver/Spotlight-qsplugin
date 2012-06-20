@@ -91,21 +91,19 @@
 
 - (NSString *)string:(NSString *)string byAddingTags:(NSArray *)add removingTags:(NSArray *)remove settingTags:(NSArray *)setTags {
 	
-	NSMutableArray *array;
-	if ([string length]) {
-		array = [[string componentsSeparatedByString:@" "] mutableCopy];
-	} else {
-		// start empty (instead of with @"" as a component of the array)
-		array = [[NSMutableArray alloc] init];
-	}
-	// split words from tags in the existing comment (preserving order and duplicates for words)
 	NSMutableArray *words = [NSMutableArray array];
 	NSMutableSet *tags = [NSMutableSet set];
-	for (NSString *component in array) {
-		if ([[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:component]) {
-			[tags addObject:component];
-		} else {
-			[words addObject:component];
+	// process the existing Spotlight comment
+	if ([string length]) {
+		NSArray *array = [string componentsSeparatedByString:@" "];
+		// split words from tags in the existing comment (preserving order and duplicates for words)
+		tags = [NSMutableSet set];
+		for (NSString *component in array) {
+			if ([[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:component]) {
+				[tags addObject:component];
+			} else {
+				[words addObject:component];
+			}
 		}
 	}
 	if ([setTags count]) {
