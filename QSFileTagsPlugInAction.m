@@ -90,7 +90,6 @@
 }
 
 - (NSString *)string:(NSString *)string byAddingTags:(NSArray *)add removingTags:(NSArray *)remove settingTags:(NSArray *)setTags {
-	NSMutableArray *mutAdd = [add mutableCopy];
 	
 	NSMutableArray *array;
 	if ([string length]) {
@@ -99,21 +98,28 @@
 		// start empty (instead of with @"" as a component of the array)
 		array = [[NSMutableArray alloc] init];
 	}
-	if (setTags) {
-		for(NSString * component in array) {
-            if ([[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:component]) {
-				[array removeObject:component];
-			}
+	// split words from tags in the existing comment (preserving order and duplicates for words)
+	NSMutableArray *words = [NSMutableArray array];
+	NSMutableSet *tags = [NSMutableSet set];
+	for (NSString *component in array) {
+		if ([[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:component]) {
+			[tags addObject:component];
+		} else {
+			[words addObject:component];
 		}
 	}
-	[mutAdd removeObjectsInArray:array];
-	[array addObjectsFromArray:mutAdd];
-	[array removeObjectsInArray:remove];
-    [mutAdd release];
-	
-	[array addObjectsFromArray:setTags];
-    NSString *result = [array componentsJoinedByString:@" "];
-    [array release];
+	if ([setTags count]) {
+		// overwrite exisitng tags
+		tags = [NSMutableSet setWithArray:setTags];
+	} else {
+		// build a list of tags
+		NSSet *removeTags = [NSSet setWithArray:remove];
+		NSSet *addTags = [NSSet setWithArray:add];
+		[tags minusSet:removeTags];
+		[tags unionSet:addTags];
+	}
+	[words addObjectsFromArray:[tags allObjects]];
+    NSString *result = [words componentsJoinedByString:@" "];
 	return result;
 }
 
