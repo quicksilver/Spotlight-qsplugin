@@ -101,12 +101,9 @@
 	// process the existing Spotlight comment
 	if ([string length]) {
 		NSArray *array = [string componentsSeparatedByString:@" "];
-		// split words from tags in the existing comment (preserving order and duplicates for words)
-		tags = [NSMutableSet set];
+		// split words from tags in the existing comment (preserving order and duplicates)
 		for (NSString *component in array) {
-			if ([[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:component]) {
-				[tags addObject:component];
-			} else {
+			if (![[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:component]) {
 				[words addObject:component];
 			}
 		}
@@ -116,6 +113,7 @@
 		tags = [NSMutableSet setWithArray:setTags];
 	} else {
 		// build a list of tags
+		tags = [NSMutableSet setWithArray:[self tagsFromString:string]];
 		NSSet *removeTags = [NSSet setWithArray:remove];
 		NSSet *addTags = [NSSet setWithArray:add];
 		[tags minusSet:removeTags];
