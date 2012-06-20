@@ -49,7 +49,7 @@
 		7FD8EF3207EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightPlugIn_Action.m; sourceTree = "<group>"; };
 		7FD8EF4307EB586A00F57CB7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Spotlight Module.qsplugin"; path = "Spotlight Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1AC9740486D14A00FE50C9 /* Spotlight Plugin.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Spotlight Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4751D071517BD36009BEFBB /* QSSpotlightObjectSource.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSSpotlightObjectSource.xib; sourceTree = "<group>"; };
 		D4AD04281517A6B30039C3A0 /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
 		D4B2F6C3158A66AC00A03A68 /* QSFileTagsPlugInAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSFileTagsPlugInAction.h; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 		1ED78706FE9D4A0611CA0C5A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */,
+				8D1AC9740486D14A00FE50C9 /* Spotlight Plugin.qsplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -165,9 +165,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1AC9600486D14A00FE50C9 /* Spotlight Module */ = {
+		8D1AC9600486D14A00FE50C9 /* Spotlight Plugin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7FFF2555085E488700266176 /* Build configuration list for PBXNativeTarget "Spotlight Module" */;
+			buildConfigurationList = 7FFF2555085E488700266176 /* Build configuration list for PBXNativeTarget "Spotlight Plugin" */;
 			buildPhases = (
 				8D1AC9660486D14A00FE50C9 /* Resources */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
@@ -178,10 +178,10 @@
 			);
 			dependencies = (
 			);
-			name = "Spotlight Module";
+			name = "Spotlight Plugin";
 			productInstallPath = "$(HOME)/Developer/Palettes";
 			productName = QSSpotlightPlugIn;
-			productReference = 8D1AC9740486D14A00FE50C9 /* Spotlight Module.qsplugin */;
+			productReference = 8D1AC9740486D14A00FE50C9 /* Spotlight Plugin.qsplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -206,7 +206,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1AC9600486D14A00FE50C9 /* Spotlight Module */,
+				8D1AC9600486D14A00FE50C9 /* Spotlight Plugin */,
 			);
 		};
 /* End PBXProject section */
@@ -296,7 +296,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7FFF2555085E488700266176 /* Build configuration list for PBXNativeTarget "Spotlight Module" */ = {
+		7FFF2555085E488700266176 /* Build configuration list for PBXNativeTarget "Spotlight Plugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7FFF2556085E488700266176 /* Debug */,
