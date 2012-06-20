@@ -92,7 +92,13 @@
 - (NSString *)string:(NSString *)string byAddingTags:(NSArray *)add removingTags:(NSArray *)remove settingTags:(NSArray *)setTags {
 	NSMutableArray *mutAdd = [add mutableCopy];
 	
-	NSMutableArray *array = [[string componentsSeparatedByString:@" "] mutableCopy];
+	NSMutableArray *array;
+	if ([string length]) {
+		array = [[string componentsSeparatedByString:@" "] mutableCopy];
+	} else {
+		// start empty (instead of with @"" as a component of the array)
+		array = [[NSMutableArray alloc] init];
+	}
 	if (setTags) {
 		for(NSString * component in array) {
             if ([[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:component]) {
