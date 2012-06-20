@@ -85,13 +85,14 @@
 
 - (NSArray *)tagsFromString:(NSString *)string {
 	NSArray *tags = [string componentsSeparatedByString:@" "];
-	NSMutableArray *realTags = [NSMutableArray array];
-	for(NSString * tag in tags) {
+	NSLog(@"Spotlight comment split: %@", tags);
+	NSMutableSet *realTags = [NSMutableSet set];
+	for (NSString *tag in tags) {
         if ([[QSMDTagsQueryManager sharedInstance] stringByRemovingTagPrefix:tag]) {
 			[realTags addObject:tag];
 		}
 	}
-	return realTags;
+	return [realTags allObjects];
 }
 
 - (NSString *)string:(NSString *)string byAddingTags:(NSArray *)add removingTags:(NSArray *)remove settingTags:(NSArray *)setTags {
