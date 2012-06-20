@@ -69,10 +69,15 @@
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject {
 	NSWorkspace *ws = [NSWorkspace sharedWorkspace];
 	NSString *comment = [ws commentForFile:[dObject singleFilePath]];
-	NSArray *tags = [self tagsFromString:comment];
-	tags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByRemovingTagPrefix:) onObjectsInArray:tags returnValues:YES];
-	
-	QSObject *textObject = [QSObject textProxyObjectWithDefaultValue:[tags componentsJoinedByString:@" "]];
+	QSObject *textObject = nil;
+	if ([action isEqualToString:@"QSAddFileTagsAction"]) {
+		textObject = [QSObject textProxyObjectWithDefaultValue:@""];
+	} else {
+		NSArray *tags = [self tagsFromString:comment];
+		tags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByRemovingTagPrefix:) onObjectsInArray:tags returnValues:YES];
+		
+		textObject = [QSObject textProxyObjectWithDefaultValue:[tags componentsJoinedByString:@" "]];
+	}
 	return [NSArray arrayWithObject:textObject]; //[QSLibarrayForType:NSFilenamesPboardType];
 }
 
