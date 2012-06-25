@@ -261,7 +261,7 @@
 /* Begin XCBuildConfiguration section */
 		7FFF2556085E488700266176 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1483E54410D0F139009F139A /* QSPlugIn_Debug.xcconfig */;
+			baseConfigurationReference = 1483E54710D0F139009F139A /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Spotlight Plugin";
@@ -271,7 +271,7 @@
 		};
 		7FFF2557085E488700266176 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1483E54610D0F139009F139A /* QSPlugIn_Release.xcconfig */;
+			baseConfigurationReference = 1483E54710D0F139009F139A /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Spotlight Plugin";
