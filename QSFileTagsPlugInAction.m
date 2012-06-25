@@ -97,7 +97,7 @@
 - (NSString *)string:(NSString *)string byAddingTags:(NSArray *)add removingTags:(NSArray *)remove settingTags:(NSArray *)setTags {
 	
 	NSMutableArray *words = [NSMutableArray array];
-	NSMutableSet *tags = [NSMutableSet set];
+	NSMutableSet *tags;
 	// process the existing Spotlight comment
 	if ([string length]) {
 		NSArray *array = [string componentsSeparatedByString:@" "];
