@@ -14,7 +14,7 @@
 	NSTask *task;
 	NSMutableString *resultPaths;
 }
-+ findWrapperWithQuery:(NSString *)aQuery path:(NSString *)aPath keepalive:(BOOL)keepAlive;
++ (QSMDFindWrapper *)findWrapperWithQuery:(NSString *)aQuery path:(NSString *)aPath keepalive:(BOOL)keepAlive;
 - (void)startQuery;
 - (NSMutableArray *)results;
 
