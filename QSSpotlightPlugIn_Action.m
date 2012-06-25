@@ -154,6 +154,8 @@
 	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
 	// let the user know results are being collected
 	QSObject *searching = [QSObject makeObjectWithIdentifier:@"QSSearchPending"];
+	// pretty names sometimes require ugly hacks
+	search = [search stringByReplacingOccurrencesOfString:@"kMDItemFSName LIKE[cd]" withString:@"file names like"];
 	[searching setName:[NSString stringWithFormat:@"Searching for \"%@\"...", search]];
 	[searching setIcon:[QSResourceManager imageNamed:@"Find"]];
 	[results addObject:searching];
