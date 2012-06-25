@@ -7,11 +7,8 @@
 //  Copyright 2005 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
-
-
 @interface QSSpotlightObjectSource : QSObjectSource 
 {
-    NSMutableDictionary *pending;
+	IBOutlet NSTextField *searchPath;
 }
 @end
