@@ -11,8 +11,8 @@
 
 @implementation QSMDFindWrapper
 
-+ findWrapperWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag{
 	return [[[self alloc]initWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag]autorelease];
++ (QSMDFindWrapper *)findWrapperWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag{
 }
 
 - (id)initWithQuery:(NSString *)aQuery path:(NSString *)aPath keepalive:(BOOL)flag{

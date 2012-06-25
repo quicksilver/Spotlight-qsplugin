@@ -5,43 +5,101 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Spotlight Module</string>
+	<string>Spotlight Plugin</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.blacktree.Quicksilver.QSSpotlightPlugIn</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Spotlight Module</string>
+	<string>Spotlight Plugin</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
-	<key>CFBundleVersion</key>
-	<string>E7</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2.0.0</string>
 	<key>CFBundleSignature</key>
 	<string>0.8</string>
+	<key>CFBundleVersion</key>
+	<string>EC</string>
 	<key>NSPrincipalClass</key>
 	<string>QSSpotlightPlugIn</string>
 	<key>QSActions</key>
 	<dict>
-		<key>QSSpotlightRunSavedQuery</key>
+		<key>QSAddFileTagsAction</key>
 		<dict>
 			<key>actionClass</key>
-			<string>QSSpotlightSavedSearchSource</string>
+			<string>QSFileTagsPlugInAction</string>
 			<key>actionSelector</key>
-			<string>spotlightRunSavedQuery:</string>
-			<key>directFileTypes</key>
-			<array>
-				<string>savedSearch</string>
-			</array>
+			<string>addTagsForFile:tags:</string>
 			<key>directTypes</key>
 			<array>
 				<string>NSFilenamesPboardType</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Tag</string>
 			<key>name</key>
-			<string>Run Search with Spotlight</string>
+			<string>Add Tags...</string>
+		</dict>
+		<key>QSRemoveFileTagsAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>removeTagsForFile:tags:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Remove Tags...</string>
+		</dict>
+		<key>QSSetFileTagsAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>setTagsForFile:tags:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Set Tags...</string>
+		</dict>
+		<key>QSShowFileTagsAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>showTags:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Show Tags</string>
+		</dict>
+		<key>QSShowTaggedFilesAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>showTaggedFilesInFinder:</string>
+			<key>directTypes</key>
+			<array>
+				<string>qs.tag.file</string>
+			</array>
+			<key>icon</key>
+			<string>Tag</string>
+			<key>name</key>
+			<string>Show Files Matching Tag</string>
 			<key>precedence</key>
-			<integer>5</integer>
+			<integer>3</integer>
 		</dict>
 		<key>QSSpotlightSearchFilenamesInFolder</key>
 		<dict>
@@ -58,9 +116,9 @@
 				<string>NSFilenamesPboardType</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight Filenames of Contents...</string>
+			<string>Spotlight Filenames Matching…</string>
 			<key>xalternateAction</key>
 			<string></string>
 		</dict>
@@ -81,9 +139,9 @@
 				<string>NSFilenamesPboardType</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight Contents...</string>
+			<string>Spotlight Contents…</string>
 		</dict>
 		<key>QSSpotlightSearchInFolderWithFinder</key>
 		<dict>
@@ -100,9 +158,9 @@
 				<string>NSFilenamesPboardType</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight Contents in Finder...</string>
+			<string>Spotlight Contents in Finder…</string>
 		</dict>
 		<key>QSSpotlightStringSearch</key>
 		<dict>
@@ -130,9 +188,9 @@
 				<string>*</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight in Command</string>
+			<string>Get Spotlight Results</string>
 		</dict>
 		<key>QSSpotlightStringSearchWithFinder</key>
 		<dict>
@@ -145,38 +203,138 @@
 				<string>*</string>
 			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight in Finder</string>
+			<string>Show Spotlight Results in Finder</string>
 		</dict>
 	</dict>
+	<key>QSActionsDisabled</key>
+	<dict>
+		<key>QSSpotlightRunSavedQuery</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSSpotlightSavedSearchSource</string>
+			<key>actionSelector</key>
+			<string>spotlightRunSavedQuery:</string>
+			<key>directFileTypes</key>
+			<array>
+				<string>savedSearch</string>
+			</array>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>Find</string>
+			<key>name</key>
+			<string>Run Search with Spotlight</string>
+			<key>precedence</key>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>QSLoadImmediately</key>
+	<true/>
 	<key>QSPlugIn</key>
 	<dict>
 		<key>author</key>
-		<string>Blacktree, Inc.</string>
+		<string>Rob McBroom</string>
 		<key>categories</key>
 		<array>
 			<string>Search</string>
+			<string>Files</string>
 		</array>
 		<key>description</key>
 		<string>Spotlight actions and integration</string>
 		<key>extendedDescription</key>
-		<string>Spotlight actions and integration
+		<string>&lt;h2 id=&quot;spotlight_plugin&quot;&gt;Spotlight Plugin&lt;/h2&gt;
 
-&lt;p&gt;
-&lt;h3&gt;Enhancements&lt;/h3&gt;
-&lt;br&gt;
+&lt;p&gt;This adds Spotlight integration to Quicksilver. It allows you to add files to your catalog based on Spotlight queries, tag files, and perform searches directly from Quicksilver.&lt;/p&gt;
+
+&lt;h3 id=&quot;catalog&quot;&gt;Catalog&lt;/h3&gt;
+
+&lt;h4 id=&quot;presets&quot;&gt;Presets&lt;/h4&gt;
+
+&lt;p&gt;There are two catalog presets added by this plug-in.&lt;/p&gt;
+
 &lt;ul&gt;
-&lt;li&gt;Spotlight Query Catalog Entry, currently pretty rough.
-&lt;li&gt;Search in Spotlight Window Action
-&lt;li&gt;Spotlight Search in Folder Action (internally or through Finder)
-&lt;li&gt;Spotlight Search for Filenames Action
+&lt;li&gt;&lt;strong&gt;Smart Folders&lt;/strong&gt; - Automtically adds any Smart Folders you&amp;#8217;ve created and saved. Presently, all you can do is open them in Finder.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File Tags&lt;/strong&gt; - If you&amp;#8217;ve added any tags (using Quicksilver&amp;#8217;s tag prefix) to your files, this will add them directly to the catalog. Using → or / on a tag will show all files matching that tag.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;/ul&gt;</string>
+&lt;h4 id=&quot;custom_entries&quot;&gt;Custom Entries&lt;/h4&gt;
+
+&lt;p&gt;You can create custom catalog entries to add files based on a Spotlight search. (See the &lt;a href=&quot;#syntax&quot;&gt;Syntax&lt;/a&gt; section.) From the catalog preferences, click the &amp;#8220;+&amp;#8221; and choose &amp;#8220;Spotlight&amp;#8221;. You&amp;#8217;ll be able to define the query, limit the search to a specific folder, and ignore removable disks via the entry&amp;#8217;s info panel.&lt;/p&gt;
+
+&lt;h3 id=&quot;actions&quot;&gt;Actions&lt;/h3&gt;
+
+&lt;h4 id=&quot;get_spotlight_results&quot;&gt;Get Spotlight Results&lt;/h4&gt;
+
+&lt;p&gt;Searches for text and shows the results in Quicksilver.&lt;/p&gt;
+
+&lt;h4 id=&quot;show_spotlight_results_in_finder&quot;&gt;Show Spotlight Results in Finder&lt;/h4&gt;
+
+&lt;p&gt;Uses search text to create and display a Smart Folder.&lt;/p&gt;
+
+&lt;h4 id=&quot;spotlight_in_window&quot;&gt;Spotlight in Window&lt;/h4&gt;
+
+&lt;p&gt;Opens a Finder window with the search text pre-populated. The main advantage to this action is that it allows you to use the search syntax most users are familiar with.&lt;/p&gt;
+
+&lt;h4 id=&quot;spotlight_contents&quot;&gt;Spotlight Contents…&lt;/h4&gt;
+
+&lt;p&gt;Perform a Spotlight search inside the selected folder and display the results in Quicksilver. Enter search text in the third pane.&lt;/p&gt;
+
+&lt;h4 id=&quot;spotlight_contents_in_finder&quot;&gt;Spotlight Contents in Finder…&lt;/h4&gt;
+
+&lt;p&gt;Perform a Spotlight search inside the selected folder and display the results in Finder. Enter search text in the third pane.&lt;/p&gt;
+
+&lt;h4 id=&quot;spotlight_filenames_matching&quot;&gt;Spotlight Filenames Matching…&lt;/h4&gt;
+
+&lt;p&gt;Search only filenames inside the selected folder and display the results in Quicksilver. Enter search text in the third pane.&lt;/p&gt;
+
+&lt;h4 id=&quot;show_files_matching_tag&quot;&gt;Show Files Matching Tag&lt;/h4&gt;
+
+&lt;p&gt;Create and display a Smart Folder containing files matching the selected tag.&lt;/p&gt;
+
+&lt;h4 id=&quot;show_tags&quot;&gt;Show Tags&lt;/h4&gt;
+
+&lt;p&gt;Show any tags assigned to the selected file or folder.&lt;/p&gt;
+
+&lt;h4 id=&quot;add_tags&quot;&gt;Add Tags…&lt;/h4&gt;
+
+&lt;p&gt;Add tags to the selected file or folder. Enter the new tags separated by a single space in the third pane. Existing tags will be preserved.&lt;/p&gt;
+
+&lt;h4 id=&quot;remove_tags&quot;&gt;Remove Tags…&lt;/h4&gt;
+
+&lt;p&gt;Remove tags for the selected file or folder. Enter the tags to remove separated by a single space in the third pane.&lt;/p&gt;
+
+&lt;h4 id=&quot;set_tags&quot;&gt;Set Tags…&lt;/h4&gt;
+
+&lt;p&gt;Replace any tags for the selected file or folder with the ones specified. Enter the tags separated by a single space in the third pane.&lt;/p&gt;
+
+&lt;h3 id=&quot;syntax&quot;&gt;Syntax&lt;/h3&gt;
+
+&lt;p&gt;To search for basic terms like &amp;#8220;vacation&amp;#8221;, you can just search for the word. For more complicated searches (by type, etc.) this plugin is unfortunately not able to support the familiar Spotlight syntax like &lt;code&gt;kind:movie&lt;/code&gt;, so you might have to get your hands dirty to set up a search. The syntax for most searches is poorly documented by Apple in &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849-CJBEJBHH&quot;&gt;two&lt;/a&gt; &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html#//apple_ref/doc/uid/TP40001795-SW1&quot;&gt;places&lt;/a&gt;. It&amp;#8217;s really only worth the trouble if you&amp;#8217;re adding a custom catalog entry based on Spotlight, but it also works with most of the actions.&lt;/p&gt;
+
+&lt;p&gt;Some examples might be helpful.&lt;/p&gt;
+
+&lt;p&gt;To search for movies related to &amp;#8220;vacation&amp;#8221;, you might do something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;kMDItemKind LIKE &apos;*movie&apos; &amp;amp;&amp;amp; (kMDItemDisplayName LIKE[cd] &apos;*vaction*&apos; || kMDItemTextContent LIKE[cd] &apos;*vaction*&apos;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To replace the default &amp;#8220;Applications&amp;#8221; preset in your catalog with one that finds &lt;em&gt;all&lt;/em&gt; applications, you could add a new entry with this query:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;kMDItemKind == &apos;Application&apos;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A good way to see what attributes are available and what the values look like is to examine a file in Terminal using &lt;code&gt;mdls&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;mdls ~/Movies/Beach.mov
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To make things worse, Smart Folders use a different syntax so if you&amp;#8217;re trying to do a complicated search with the &amp;#8220;Show Spotlight Results in Finder&amp;#8221; action, you&amp;#8217;ll need to use that, which is also &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849&quot;&gt;documented&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
-		<string>Spotlight</string>
-		<key>qsversion</key>
-		<string>2A5F</string>
+		<string>Find</string>
 		<key>relatedBundles </key>
 		<array/>
 	</dict>
@@ -184,36 +342,61 @@
 	<array>
 		<dict>
 			<key>ID</key>
-			<string>QSPresetSpotlightSavedSearches</string>
-			<key>enabled</key>
-			<true/>
+			<string>QSPresetSpotlightGroup</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetSpotlightSavedSearches</string>
+					<key>enabled</key>
+					<true/>
+					<key>icon</key>
+					<string>SmartFolderIcon</string>
+					<key>name</key>
+					<string>Smart Folders</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>savedSearch</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Library/Saved Searches</string>
+						<key>skipItem</key>
+						<true/>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>QSPresetQSFileTagsPlugIn</string>
+					<key>icon</key>
+					<string>Tag</string>
+					<key>name</key>
+					<string>File Tags</string>
+					<key>source</key>
+					<string>QSFileTagsPlugInSource</string>
+				</dict>
+			</array>
 			<key>icon</key>
-			<string>Spotlight</string>
+			<string>Find</string>
 			<key>name</key>
-			<string>Spotlight Saved Searches</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>folderTypes</key>
-				<array>
-					<string>savedSearch</string>
-				</array>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Library/Saved Searches</string>
-				<key>skipItem</key>
-				<true/>
-			</dict>
+			<string>Spotlight</string>
 			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
+			<string>QSGroupObjectSource</string>
 		</dict>
 	</array>
 	<key>QSRegistration</key>
 	<dict>
 		<key>QSActionProviders</key>
 		<dict>
+			<key>QSFileTagsPlugInAction</key>
+			<string>QSFileTagsPlugInAction</string>
 			<key>QSSpotlightPlugIn_Action</key>
 			<string>QSSpotlightPlugIn_Action</string>
 			<key>QSSpotlightSavedSearchSource</key>
@@ -224,28 +407,55 @@
 			<key>com.apple.finder.smart-folder</key>
 			<string>QSSpotlightSavedSearchSource</string>
 		</dict>
+		<key>QSObjectHandlers</key>
+		<dict>
+			<key>qs.tag.file</key>
+			<string>QSFileTagsPlugInSource</string>
+		</dict>
 		<key>QSObjectSources</key>
 		<dict>
+			<key>QSFileTagsPlugInSource</key>
+			<string>QSFileTagsPlugInSource</string>
 			<key>QSSpotlightObjectSource</key>
 			<string>QSSpotlightObjectSource</string>
+		</dict>
+		<key>QSPreferencePanes</key>
+		<dict>
+			<key>QSFileTagsPrefPane</key>
+			<dict>
+				<key>class</key>
+				<string>QSPreferencePane</string>
+				<key>description</key>
+				<string>File Tagging Options</string>
+				<key>icon</key>
+				<string>Tag</string>
+				<key>name</key>
+				<string>Tags</string>
+				<key>nibBundle</key>
+				<string>com.blacktree.Quicksilver.QSSpotlightPlugIn</string>
+				<key>nibName</key>
+				<string>QSFileTagsPrefPane</string>
+			</dict>
 		</dict>
 	</dict>
 	<key>QSRequirements</key>
 	<dict>
-		<key>launchLoad</key>
-		<true/>
-		<key>osVersion</key>
-		<string>8A414</string>
-		<key>qsversion</key>
-		<string>2B9E</string>
+		<key>obsoletes</key>
+		<array>
+			<string>com.blacktree.Quicksilver.QSFileTagsPlugIn</string>
+		</array>
+		<key>version</key>
+		<string>3926</string>
 	</dict>
 	<key>QSResourceAdditions</key>
 	<dict>
-		<key>Spotlight</key>
-		<array>
-			<string>/System/Library/CoreServices/Search.bundle/Contents/Resources/Spotlight.icns</string>
-			<string>/System/Library/PreferencePanes/Spotlight.prefPane/Contents/Resources/SpotlightPref_big.tiff</string>
-		</array>
+		<key>Tag</key>
+		<dict>
+			<key>bundle</key>
+			<string>com.blacktree.Quicksilver.QSSpotlightPlugIn</string>
+			<key>resource</key>
+			<string>Tag.png</string>
+		</dict>
 	</dict>
 </dict>
 </plist>
