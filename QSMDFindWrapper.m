@@ -11,8 +11,8 @@
 
 @implementation QSMDFindWrapper
 
-	return [[[self alloc]initWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag]autorelease];
 + (QSMDFindWrapper *)findWrapperWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag{
+	return [[[self alloc] initWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag]autorelease];
 }
 
 - (id)initWithQuery:(NSString *)aQuery path:(NSString *)aPath keepalive:(BOOL)flag{
@@ -35,33 +35,25 @@
 	[resultPaths release];
 	[super dealloc];
 }
-- (NSMutableArray *)results{
+- (NSMutableArray *)results
+{
 	return results;
 }
-- (void)startQuery{
+- (void)startQuery
+{
 	[self retain];
-	
-	task=[[NSTask taskWithLaunchPath:@"/usr/bin/mdfind"
-						   arguments:[NSArray arrayWithObjects:query,
-											   path?@"-onlyin":nil,path,
-							   nil]]retain];
-	
+	task = [[NSTask taskWithLaunchPath:@"/usr/bin/mdfind" arguments:[NSArray arrayWithObjects:query, path ? @"-onlyin" : nil, path, nil]] retain];
 	[task setStandardOutput:[NSPipe pipe]];
-	NSFileHandle *handle=[[task standardOutput]fileHandleForReading];
-
+	NSFileHandle *handle = [[task standardOutput]fileHandleForReading];
 	[handle retain];
-		[task launch];
+	[task launch];
 		
-		
-	[[NSNotificationCenter defaultCenter]addObserver:self
-											selector:@selector(dataAvailable:)
-												name:NSFileHandleReadCompletionNotification
-											  object:handle];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataAvailable:) name:NSFileHandleReadCompletionNotification object:handle];
 	[handle readInBackgroundAndNotify];
 	//	results=[[NSMutableArray alloc]init];
-	QSObject *searchObject=[QSObject objectWithString:@"Searching"];
-	[searchObject setIcon:[QSResourceManager imageNamed:@"Find"]];
-	[results addObject:searchObject];
+//	QSObject *searchObject=[QSObject objectWithString:@"Searching"];
+//	[searchObject setIcon:[QSResourceManager imageNamed:@"Find"]];
+//	[results addObject:searchObject];
 	
 	
 	[QSTasks updateTask:@"QSSpotlight" status:@"Performing Search" progress:0];
@@ -90,7 +82,8 @@
 	//NSLog(@"remaining:%@",resultPaths);
 	
 	[results addObjectsFromArray:[QSObject fileObjectsWithPathArray:pathArray]];
-	[[NSNotificationCenter defaultCenter]postNotificationName:@"QSSourceArrayUpdated" object:results];
+//	NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:results, kQSResultArrayKey, nil];
+//	[[NSNotificationCenter defaultCenter] postNotificationName:@"QSSourceArrayUpdated" object:self userInfo:userInfo];
 	
 	//	[results release];
 	//	results=nil;
@@ -99,10 +92,9 @@
 	else{
 		
 		[QSTasks removeTask:@"QSSpotlight"];
-		[results removeObjectAtIndex:0];
+//		[results removeObjectAtIndex:0];
 		
-		[[NSNotificationCenter defaultCenter]postNotificationName:@"QSSourceArrayUpdated" object:results];
-		[[NSNotificationCenter defaultCenter]postNotificationName:@"QSSourceArrayFinished" object:results];
+//		[[NSNotificationCenter defaultCenter]postNotificationName:@"QSSourceArrayUpdated" object:self userInfo:userInfo];
 		[self release];
 	}
 }
