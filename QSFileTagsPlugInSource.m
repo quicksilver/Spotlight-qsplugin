@@ -11,6 +11,20 @@
 
 @implementation QSFileTagsPlugInSource
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+		if (!gTagPrefix) {
+			// make sure the tag prefix is set (and let the user know)
+			[[NSUserDefaults standardUserDefaults] setObject:@"@" forKey:@"QSTagPrefix"];
+			NSString *message = [NSString stringWithFormat:@"The prefix for Spotlight tags has been set to \"%@\". You can change it in the Preferences.", gTagPrefix];
+			QSShowNotifierWithAttributes([NSDictionary dictionaryWithObjectsAndKeys:@"SpotlightPluginNotification", QSNotifierType, [QSResourceManager imageNamed:@"Tag"], QSNotifierIcon, @"Spotlight Tagging", QSNotifierTitle, message, QSNotifierText, nil]);
+		}
+    }
+    return self;
+}
+
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry {
     return NO;
 }
