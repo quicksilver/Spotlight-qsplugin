@@ -2,6 +2,10 @@
 
 This adds Spotlight integration to Quicksilver. It allows you to add files to your catalog based on Spotlight queries, tag files, and perform searches directly from Quicksilver.
 
+Tags are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with `#`, but you can change this (to `@` or `tag:`) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you'll have to go update all existing tags manually.
+
+Tags and comments are both stored in a file's "Spotlight Comments" field, but they don't interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.
+
 ### Catalog ###
 
 #### Presets ####
@@ -51,7 +55,7 @@ Show any tags assigned to the selected file or folder.
 
 #### Add Tags… ####
 
-Add tags to the selected file or folder. Enter the new tags separated by a single space in the third pane. Existing tags will be preserved.
+Add tags to the selected file or folder. Enter the new tags separated by a single space in the third pane. Existing tags and Spotlight comments will be preserved.
 
 #### Remove Tags… ####
 
@@ -59,7 +63,11 @@ Remove tags for the selected file or folder. Enter the tags to remove separated 
 
 #### Set Tags… ####
 
-Replace any tags for the selected file or folder with the ones specified. Enter the tags separated by a single space in the third pane.
+Replace any tags for the selected file or folder with the ones specified. Enter the tags separated by a single space in the third pane. Existing Spotlight comments will be preserved.
+
+#### Set Comment… ####
+
+Set the file's Spotlight comment to the text entered in the thrid pane. Tags (if any) will be preserved.
 
 ### Syntax ###
 
