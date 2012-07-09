@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.0</string>
+	<string>2.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>0.8</string>
 	<key>CFBundleVersion</key>
-	<string>EC</string>
+	<string>ED</string>
 	<key>NSPrincipalClass</key>
 	<string>QSSpotlightPlugIn</string>
 	<key>QSActions</key>
@@ -53,6 +53,23 @@
 			<string>Tag</string>
 			<key>name</key>
 			<string>Remove Tags...</string>
+		</dict>
+		<key>QSSetFileCommentAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSFileTagsPlugInAction</string>
+			<key>actionSelector</key>
+			<string>setCommentForFile:to:</string>
+			<key>directTypes</key>
+			<array>
+				<string>NSFilenamesPboardType</string>
+			</array>
+			<key>icon</key>
+			<string>com.apple.finder</string>
+			<key>name</key>
+			<string>Set Comment…</string>
+			<key>validatesObjects</key>
+			<false/>
 		</dict>
 		<key>QSSetFileTagsAction</key>
 		<dict>
@@ -250,6 +267,10 @@
 
 &lt;p&gt;This adds Spotlight integration to Quicksilver. It allows you to add files to your catalog based on Spotlight queries, tag files, and perform searches directly from Quicksilver.&lt;/p&gt;
 
+&lt;p&gt;Tags are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with &lt;code&gt;#&lt;/code&gt;, but you can change this (to &lt;code&gt;@&lt;/code&gt; or &lt;code&gt;tag:&lt;/code&gt;) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you&amp;#8217;ll have to go update all existing tags manually.&lt;/p&gt;
+
+&lt;p&gt;Tags and comments are both stored in a file&amp;#8217;s &amp;#8220;Spotlight Comments&amp;#8221; field, but they don&amp;#8217;t interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.&lt;/p&gt;
+
 &lt;h3 id=&quot;catalog&quot;&gt;Catalog&lt;/h3&gt;
 
 &lt;h4 id=&quot;presets&quot;&gt;Presets&lt;/h4&gt;
@@ -301,7 +322,7 @@
 
 &lt;h4 id=&quot;add_tags&quot;&gt;Add Tags…&lt;/h4&gt;
 
-&lt;p&gt;Add tags to the selected file or folder. Enter the new tags separated by a single space in the third pane. Existing tags will be preserved.&lt;/p&gt;
+&lt;p&gt;Add tags to the selected file or folder. Enter the new tags separated by a single space in the third pane. Existing tags and Spotlight comments will be preserved.&lt;/p&gt;
 
 &lt;h4 id=&quot;remove_tags&quot;&gt;Remove Tags…&lt;/h4&gt;
 
@@ -309,7 +330,11 @@
 
 &lt;h4 id=&quot;set_tags&quot;&gt;Set Tags…&lt;/h4&gt;
 
-&lt;p&gt;Replace any tags for the selected file or folder with the ones specified. Enter the tags separated by a single space in the third pane.&lt;/p&gt;
+&lt;p&gt;Replace any tags for the selected file or folder with the ones specified. Enter the tags separated by a single space in the third pane. Existing Spotlight comments will be preserved.&lt;/p&gt;
+
+&lt;h4 id=&quot;set_comment&quot;&gt;Set Comment…&lt;/h4&gt;
+
+&lt;p&gt;Set the file&amp;#8217;s Spotlight comment to the text entered in the thrid pane. Tags (if any) will be preserved.&lt;/p&gt;
 
 &lt;h3 id=&quot;syntax&quot;&gt;Syntax&lt;/h3&gt;
 
