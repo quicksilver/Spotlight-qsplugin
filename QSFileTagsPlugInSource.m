@@ -18,8 +18,7 @@
 		if (!gTagPrefix) {
 			// make sure the tag prefix is set (and let the user know)
 			[[NSUserDefaults standardUserDefaults] setObject:@"#" forKey:@"QSTagPrefix"];
-			NSString *message = [NSString stringWithFormat:@"The prefix for Spotlight tags has been set to \"%@\". You can change it in the Preferences.", gTagPrefix];
-			QSShowNotifierWithAttributes([NSDictionary dictionaryWithObjectsAndKeys:@"SpotlightPluginNotification", QSNotifierType, [QSResourceManager imageNamed:@"Tag.png" inBundle:[NSBundle bundleForClass:[self class]]], QSNotifierIcon, @"Spotlight Tagging", QSNotifierTitle, message, QSNotifierText, nil]);
+			[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultPrefixSetNotification:) name:@"QSApplicationDidFinishLaunchingNotification" object:nil];
 		}
     }
     return self;
@@ -61,12 +60,10 @@
 	return YES;
 }
 
-/*
- - (BOOL)loadIconForObject:(QSObject *)object {
-	 return NO;
-	 id data = [object objectForType:QSFileTagsPlugInType];
-	 [object setIcon:nil];
-	 return YES;
- }
- */
+- (void)defaultPrefixSetNotification:(NSNotification *)note
+{
+	NSString *message = [NSString stringWithFormat:@"The prefix for Spotlight tags has been set to \"%@\". You can change it in the Preferences.", gTagPrefix];
+	QSShowNotifierWithAttributes([NSDictionary dictionaryWithObjectsAndKeys:@"SpotlightPluginNotification", QSNotifierType, [QSResourceManager imageNamed:@"Tag.png" inBundle:[NSBundle bundleForClass:[self class]]], QSNotifierIcon, @"Quicksilver Spotlight Tagging", QSNotifierTitle, message, QSNotifierText, nil]);
+}
+
 @end
