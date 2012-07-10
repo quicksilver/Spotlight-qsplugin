@@ -64,6 +64,19 @@
 	return nil; 	
 }
 
+- (QSObject *)setCommentForFile:(QSObject *)dObject to:(QSObject *)iObject{
+	NSString *newComment, *path, *oldComment;
+	NSArray *tags;
+	for (QSObject *targetFile in [dObject splitObjects]) {
+		path = [targetFile objectForType:QSFilePathType];
+		oldComment = [[NSWorkspace sharedWorkspace] commentForFile:path];
+		tags = [self tagsFromString:oldComment];
+		newComment = [self string:[iObject stringValue] byAddingTags:nil removingTags:nil settingTags:tags];
+		[[NSWorkspace sharedWorkspace] setComment:newComment forFile:path];
+	}
+	return nil;
+}
+
 #pragma mark - Quicksilver Validation
 
 - (NSArray *)validIndirectObjectsForAction:(NSString *)action directObject:(QSObject *)dObject {
@@ -72,6 +85,9 @@
 	QSObject *textObject = nil;
 	if ([action isEqualToString:@"QSAddFileTagsAction"]) {
 		textObject = [QSObject textProxyObjectWithDefaultValue:@""];
+	} else if ([action isEqualToString:@"QSSetFileCommentAction"]) {
+		NSString *comment = [self commentFromString:[[NSWorkspace sharedWorkspace] commentForFile:[dObject singleFilePath]]];
+		return [NSArray arrayWithObject:[QSObject textProxyObjectWithDefaultValue:comment?comment:@""]];
 	} else {
 		NSArray *tags = [self tagsFromString:comment];
 		tags = [[QSMDTagsQueryManager sharedInstance] performSelector:@selector(stringByRemovingTagPrefix:) onObjectsInArray:tags returnValues:YES];
@@ -92,6 +108,11 @@
 		}
 	}
 	return [realTags allObjects];
+}
+
+- (NSString *)commentFromString:(NSString *)string
+{
+	return [self string:string byAddingTags:nil removingTags:[self tagsFromString:string] settingTags:nil];
 }
 
 - (NSString *)string:(NSString *)string byAddingTags:(NSArray *)add removingTags:(NSArray *)remove settingTags:(NSArray *)setTags {
