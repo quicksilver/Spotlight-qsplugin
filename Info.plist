@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.1.0</string>
+	<string>2.1.1</string>
 	<key>CFBundleSignature</key>
 	<string>0.8</string>
 	<key>CFBundleVersion</key>
-	<string>ED</string>
+	<string>EE</string>
 	<key>NSPrincipalClass</key>
 	<string>QSSpotlightPlugIn</string>
 	<key>QSActions</key>
