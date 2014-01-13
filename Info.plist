@@ -34,6 +34,8 @@
 			<array>
 				<string>NSFilenamesPboardType</string>
 			</array>
+			<key>enabled</key>
+			<false/>
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
@@ -49,6 +51,8 @@
 			<array>
 				<string>NSFilenamesPboardType</string>
 			</array>
+			<key>enabled</key>
+			<false/>
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
@@ -81,6 +85,8 @@
 			<array>
 				<string>NSFilenamesPboardType</string>
 			</array>
+			<key>enabled</key>
+			<false/>
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
@@ -96,6 +102,8 @@
 			<array>
 				<string>NSFilenamesPboardType</string>
 			</array>
+			<key>enabled</key>
+			<false/>
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
@@ -111,6 +119,8 @@
 			<array>
 				<string>qs.tag.file</string>
 			</array>
+			<key>enabled</key>
+			<false/>
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
@@ -265,9 +275,10 @@
 		<key>extendedDescription</key>
 		<string>&lt;h2&gt;Spotlight Plugin&lt;/h2&gt;
 &lt;p&gt;This adds Spotlight integration to Quicksilver. It allows you to add files to your catalog based on Spotlight queries, tag files, and perform searches directly from Quicksilver.&lt;/p&gt;
+&lt;h3&gt;Tagging&lt;/h3&gt;
+&lt;p&gt;Users on OS X 10.9 or later are strongly encouraged to use the tagging features from the File Attribute Plugin. It offers all of the same features without the compromises by taking advantage of OS X's native tagging system. Tagging related actions and catalog presets are disabled by default, but can be activated in the preferences.&lt;/p&gt;
 &lt;p&gt;Tags in comments are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with &lt;code&gt;#&lt;/code&gt;, but you can change this (to &lt;code&gt;@&lt;/code&gt; or &lt;code&gt;tag:&lt;/code&gt;) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you'll have to go update all existing tags manually.&lt;/p&gt;
 &lt;p&gt;Tags and comments are both stored in a file's "Spotlight Comments" field, but they don't interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.&lt;/p&gt;
-&lt;p&gt;Users on OS X 10.9 or later are strongly encouraged to use the tagging features from the File Attribute Plugin. It offers all of the same features without the compromises by taking advantage of OS X's native tagging system.&lt;/p&gt;
 &lt;h3&gt;Catalog&lt;/h3&gt;
 &lt;h4&gt;Presets&lt;/h4&gt;
 &lt;p&gt;There are two catalog presets added by this plug-in.&lt;/p&gt;
@@ -355,6 +366,8 @@
 				<dict>
 					<key>ID</key>
 					<string>QSPresetQSFileTagsPlugIn</string>
+					<key>enabled</key>
+					<false/>
 					<key>icon</key>
 					<string>Tag</string>
 					<key>name</key>

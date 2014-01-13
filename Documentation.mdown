@@ -2,11 +2,13 @@
 
 This adds Spotlight integration to Quicksilver. It allows you to add files to your catalog based on Spotlight queries, tag files, and perform searches directly from Quicksilver.
 
+### Tagging ###
+
+Users on OS X 10.9 or later are strongly encouraged to use the tagging features from the File Attribute Plugin. It offers all of the same features without the compromises by taking advantage of OS X's native tagging system. Tagging related actions and catalog presets are disabled by default, but can be activated in the preferences.
+
 Tags in comments are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with `#`, but you can change this (to `@` or `tag:`) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you'll have to go update all existing tags manually.
 
 Tags and comments are both stored in a file's "Spotlight Comments" field, but they don't interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.
-
-Users on OS X 10.9 or later are strongly encouraged to use the tagging features from the File Attribute Plugin. It offers all of the same features without the compromises by taking advantage of OS X's native tagging system.
 
 ### Catalog ###
 
