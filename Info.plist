@@ -317,9 +317,6 @@
 &lt;p&gt;To make things worse, Smart Folders use a different syntax so if you're trying to do a complicated search with the "Show Spotlight Results in Finder" action, you'll need to use that, which is also &lt;a href="https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849"&gt;documented&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>Find</string>
-		<key>relatedBundles </key>
-		<array>
-		</array>
 	</dict>
 	<key>QSPresetAdditions</key>
 	<array>

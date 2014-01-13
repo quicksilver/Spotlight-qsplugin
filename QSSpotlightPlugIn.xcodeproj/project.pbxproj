@@ -11,10 +11,6 @@
 		7F4894AB07F5F4EF007CB98F /* QSSpotlightObjectSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4894AA07F5F4EF007CB98F /* QSSpotlightObjectSource.m */; };
 		7F73010E07EF87280047141E /* QSMDFindWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F73010D07EF87280047141E /* QSMDFindWrapper.m */; };
 		7F9441AE0803AA6D007EDC31 /* QSObjectSource.name.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */; };
-		7FA983D0096F0E3D00321006 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA983CC096F0E3D00321006 /* QSCore.framework */; };
-		7FA983D1096F0E3D00321006 /* QSEffects.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA983CD096F0E3D00321006 /* QSEffects.framework */; };
-		7FA983D2096F0E3D00321006 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA983CE096F0E3D00321006 /* QSFoundation.framework */; };
-		7FA983D3096F0E3D00321006 /* QSInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA983CF096F0E3D00321006 /* QSInterface.framework */; };
 		7FD8EF3307EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m in Sources */ = {isa = PBXBuildFile; fileRef = 7FD8EF3207EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m */; };
 		7FD8EF4407EB586A00F57CB7 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FD8EF4307EB586A00F57CB7 /* Carbon.framework */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
@@ -30,8 +26,6 @@
 		1483E54110D0F139009F139A /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		1483E54210D0F139009F139A /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		1483E54310D0F139009F139A /* Developer.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
-		1483E54410D0F139009F139A /* QSPlugIn_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Debug.xcconfig; sourceTree = "<group>"; };
-		1483E54610D0F139009F139A /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Release.xcconfig; sourceTree = "<group>"; };
 		1483E54710D0F139009F139A /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
 		1483E54810D0F139009F139A /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		7F24E5B007ED169300943D5A /* QSSpotlightSavedSearchSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSSpotlightSavedSearchSource.h; sourceTree = "<group>"; };
@@ -41,10 +35,6 @@
 		7F73010C07EF87280047141E /* QSMDFindWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSMDFindWrapper.h; sourceTree = "<group>"; };
 		7F73010D07EF87280047141E /* QSMDFindWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSMDFindWrapper.m; sourceTree = "<group>"; };
 		7F9441AD0803AA6D007EDC31 /* QSObjectSource.name.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = QSObjectSource.name.strings; sourceTree = "<group>"; };
-		7FA983CC096F0E3D00321006 /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSCore.framework; sourceTree = QSFrameworks; };
-		7FA983CD096F0E3D00321006 /* QSEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSEffects.framework; sourceTree = QSFrameworks; };
-		7FA983CE096F0E3D00321006 /* QSFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSFoundation.framework; sourceTree = QSFrameworks; };
-		7FA983CF096F0E3D00321006 /* QSInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSInterface.framework; sourceTree = QSFrameworks; };
 		7FD8EF3107EB574C00F57CB7 /* QSSpotlightPlugIn_Action.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSSpotlightPlugIn_Action.h; sourceTree = "<group>"; };
 		7FD8EF3207EB574C00F57CB7 /* QSSpotlightPlugIn_Action.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSSpotlightPlugIn_Action.m; sourceTree = "<group>"; };
 		7FD8EF4307EB586A00F57CB7 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
@@ -70,10 +60,6 @@
 			files = (
 				8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */,
 				7FD8EF4407EB586A00F57CB7 /* Carbon.framework in Frameworks */,
-				7FA983D0096F0E3D00321006 /* QSCore.framework in Frameworks */,
-				7FA983D1096F0E3D00321006 /* QSEffects.framework in Frameworks */,
-				7FA983D2096F0E3D00321006 /* QSFoundation.framework in Frameworks */,
-				7FA983D3096F0E3D00321006 /* QSInterface.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,8 +97,6 @@
 				D4AD04281517A6B30039C3A0 /* Quicksilver.pch */,
 				1483E54210D0F139009F139A /* Debug.xcconfig */,
 				1483E54310D0F139009F139A /* Developer.xcconfig */,
-				1483E54410D0F139009F139A /* QSPlugIn_Debug.xcconfig */,
-				1483E54610D0F139009F139A /* QSPlugIn_Release.xcconfig */,
 				1483E54710D0F139009F139A /* QSPlugIn.xcconfig */,
 				1483E54810D0F139009F139A /* Release.xcconfig */,
 			);
@@ -131,10 +115,6 @@
 		2E58F364FFB232C311CA0CBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7FA983CC096F0E3D00321006 /* QSCore.framework */,
-				7FA983CD096F0E3D00321006 /* QSEffects.framework */,
-				7FA983CE096F0E3D00321006 /* QSFoundation.framework */,
-				7FA983CF096F0E3D00321006 /* QSInterface.framework */,
 				7FD8EF4307EB586A00F57CB7 /* Carbon.framework */,
 				DD92D38A0106425D02CA0E72 /* Cocoa.framework */,
 			);
@@ -169,10 +149,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7FFF2555085E488700266176 /* Build configuration list for PBXNativeTarget "Spotlight Plugin" */;
 			buildPhases = (
+				E1022B2806B3475D00299BEC /* Update Version and Documentation */,
 				8D1AC9660486D14A00FE50C9 /* Resources */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
 				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
-				E1022B2806B3475D00299BEC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -226,18 +206,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E1022B2806B3475D00299BEC /* ShellScript */ = {
+		E1022B2806B3475D00299BEC /* Update Version and Documentation */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Update Version and Documentation";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/bltrversion $INFOPLIST_FILE";
+			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -263,9 +244,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1483E54710D0F139009F139A /* QSPlugIn.xcconfig */;
 			buildSettings = {
-				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = "Spotlight Plugin";
-				ZERO_LINK = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
@@ -273,9 +252,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1483E54710D0F139009F139A /* QSPlugIn.xcconfig */;
 			buildSettings = {
-				OTHER_LDFLAGS = "-bundle";
-				PRODUCT_NAME = "Spotlight Plugin";
-				ZERO_LINK = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
