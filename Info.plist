@@ -37,7 +37,7 @@
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
-			<string>Add Tags...</string>
+			<string>Add Comment Tags...</string>
 		</dict>
 		<key>QSRemoveFileTagsAction</key>
 		<dict>
@@ -52,7 +52,7 @@
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
-			<string>Remove Tags...</string>
+			<string>Remove Comment Tags...</string>
 		</dict>
 		<key>QSSetFileCommentAction</key>
 		<dict>
@@ -84,7 +84,7 @@
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
-			<string>Set Tags...</string>
+			<string>Set Comment Tags...</string>
 		</dict>
 		<key>QSShowFileTagsAction</key>
 		<dict>
@@ -99,7 +99,7 @@
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
-			<string>Show Tags</string>
+			<string>Show Comment Tags</string>
 		</dict>
 		<key>QSShowTaggedFilesAction</key>
 		<dict>
@@ -114,7 +114,7 @@
 			<key>icon</key>
 			<string>Tag</string>
 			<key>name</key>
-			<string>Show Files Matching Tag</string>
+			<string>Show Files Matching Comment Tag</string>
 			<key>precedence</key>
 			<integer>3</integer>
 		</dict>
@@ -126,7 +126,7 @@
 			<string>spotlightSearchFilenamesInFolder:forString:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>&apos;fold&apos;</string>
+				<string>'fold'</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -149,7 +149,7 @@
 			<string>QSSpotlightSearchInFolderWithFinder</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>&apos;fold&apos;</string>
+				<string>'fold'</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -168,7 +168,7 @@
 			<string>spotlightSearchFinderInFolder:forString:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>&apos;fold&apos;</string>
+				<string>'fold'</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -263,105 +263,63 @@
 		<key>description</key>
 		<string>Spotlight actions and integration</string>
 		<key>extendedDescription</key>
-		<string>&lt;h2 id=&quot;spotlight_plugin&quot;&gt;Spotlight Plugin&lt;/h2&gt;
-
+		<string>&lt;h2&gt;Spotlight Plugin&lt;/h2&gt;
 &lt;p&gt;This adds Spotlight integration to Quicksilver. It allows you to add files to your catalog based on Spotlight queries, tag files, and perform searches directly from Quicksilver.&lt;/p&gt;
-
-&lt;p&gt;Tags are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with &lt;code&gt;#&lt;/code&gt;, but you can change this (to &lt;code&gt;@&lt;/code&gt; or &lt;code&gt;tag:&lt;/code&gt;) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you&amp;#8217;ll have to go update all existing tags manually.&lt;/p&gt;
-
-&lt;p&gt;Tags and comments are both stored in a file&amp;#8217;s &amp;#8220;Spotlight Comments&amp;#8221; field, but they don&amp;#8217;t interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.&lt;/p&gt;
-
-&lt;h3 id=&quot;catalog&quot;&gt;Catalog&lt;/h3&gt;
-
-&lt;h4 id=&quot;presets&quot;&gt;Presets&lt;/h4&gt;
-
+&lt;p&gt;Tags in comments are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with &lt;code&gt;#&lt;/code&gt;, but you can change this (to &lt;code&gt;@&lt;/code&gt; or &lt;code&gt;tag:&lt;/code&gt;) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you'll have to go update all existing tags manually.&lt;/p&gt;
+&lt;p&gt;Tags and comments are both stored in a file's "Spotlight Comments" field, but they don't interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.&lt;/p&gt;
+&lt;p&gt;Users on OS X 10.9 or later are strongly encouraged to use the tagging features from the File Attribute Plugin. It offers all of the same features without the compromises by taking advantage of OS X's native tagging system.&lt;/p&gt;
+&lt;h3&gt;Catalog&lt;/h3&gt;
+&lt;h4&gt;Presets&lt;/h4&gt;
 &lt;p&gt;There are two catalog presets added by this plug-in.&lt;/p&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Smart Folders&lt;/strong&gt; - Automtically adds any Smart Folders you&amp;#8217;ve created and saved. Presently, all you can do is open them in Finder.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;File Tags&lt;/strong&gt; - If you&amp;#8217;ve added any tags (using Quicksilver&amp;#8217;s tag prefix) to your files, this will add them directly to the catalog. Using → or / on a tag will show all files matching that tag.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smart Folders&lt;/strong&gt; - Automtically adds any Smart Folders you've created and saved. Presently, all you can do is open them in Finder.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Comment Tags&lt;/strong&gt; - If you've added any tags (using Quicksilver's tag prefix) to your files' Spotlight Comments, this will add them directly to the catalog. Using → or / on a tag will show all files matching that tag.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h4 id=&quot;custom_entries&quot;&gt;Custom Entries&lt;/h4&gt;
-
-&lt;p&gt;You can create custom catalog entries to add files based on a Spotlight search. (See the &lt;a href=&quot;#syntax&quot;&gt;Syntax&lt;/a&gt; section.) From the catalog preferences, click the &amp;#8220;+&amp;#8221; and choose &amp;#8220;Spotlight&amp;#8221;. You&amp;#8217;ll be able to define the query, limit the search to a specific folder, and ignore removable disks via the entry&amp;#8217;s info panel.&lt;/p&gt;
-
-&lt;h3 id=&quot;actions&quot;&gt;Actions&lt;/h3&gt;
-
-&lt;h4 id=&quot;get_spotlight_results&quot;&gt;Get Spotlight Results&lt;/h4&gt;
-
+&lt;h4&gt;Custom Entries&lt;/h4&gt;
+&lt;p&gt;You can create custom catalog entries to add files based on a Spotlight search. (See the &lt;a href="#syntax"&gt;Syntax&lt;/a&gt; section.) From the catalog preferences, click the "+" and choose "Spotlight". You'll be able to define the query, limit the search to a specific folder, and ignore removable disks via the entry's info panel.&lt;/p&gt;
+&lt;h3&gt;Actions&lt;/h3&gt;
+&lt;h4&gt;Get Spotlight Results&lt;/h4&gt;
 &lt;p&gt;Searches for text and shows the results in Quicksilver.&lt;/p&gt;
-
-&lt;h4 id=&quot;show_spotlight_results_in_finder&quot;&gt;Show Spotlight Results in Finder&lt;/h4&gt;
-
+&lt;h4&gt;Show Spotlight Results in Finder&lt;/h4&gt;
 &lt;p&gt;Uses search text to create and display a Smart Folder.&lt;/p&gt;
-
-&lt;h4 id=&quot;spotlight_in_window&quot;&gt;Spotlight in Window&lt;/h4&gt;
-
+&lt;h4&gt;Spotlight in Window&lt;/h4&gt;
 &lt;p&gt;Opens a Finder window with the search text pre-populated. The main advantage to this action is that it allows you to use the search syntax most users are familiar with.&lt;/p&gt;
-
-&lt;h4 id=&quot;spotlight_contents&quot;&gt;Spotlight Contents…&lt;/h4&gt;
-
+&lt;h4&gt;Spotlight Contents…&lt;/h4&gt;
 &lt;p&gt;Perform a Spotlight search inside the selected folder and display the results in Quicksilver. Enter search text in the third pane.&lt;/p&gt;
-
-&lt;h4 id=&quot;spotlight_contents_in_finder&quot;&gt;Spotlight Contents in Finder…&lt;/h4&gt;
-
+&lt;h4&gt;Spotlight Contents in Finder…&lt;/h4&gt;
 &lt;p&gt;Perform a Spotlight search inside the selected folder and display the results in Finder. Enter search text in the third pane.&lt;/p&gt;
-
-&lt;h4 id=&quot;spotlight_filenames_matching&quot;&gt;Spotlight Filenames Matching…&lt;/h4&gt;
-
+&lt;h4&gt;Spotlight Filenames Matching…&lt;/h4&gt;
 &lt;p&gt;Search only filenames inside the selected folder and display the results in Quicksilver. Enter search text in the third pane.&lt;/p&gt;
-
-&lt;h4 id=&quot;show_files_matching_tag&quot;&gt;Show Files Matching Tag&lt;/h4&gt;
-
+&lt;h4&gt;Show Files Matching Comment Tag&lt;/h4&gt;
 &lt;p&gt;Create and display a Smart Folder containing files matching the selected tag.&lt;/p&gt;
-
-&lt;h4 id=&quot;show_tags&quot;&gt;Show Tags&lt;/h4&gt;
-
-&lt;p&gt;Show any tags assigned to the selected file or folder.&lt;/p&gt;
-
-&lt;h4 id=&quot;add_tags&quot;&gt;Add Tags…&lt;/h4&gt;
-
-&lt;p&gt;Add tags to the selected file or folder. Enter the new tags separated by a single space in the third pane. Existing tags and Spotlight comments will be preserved.&lt;/p&gt;
-
-&lt;h4 id=&quot;remove_tags&quot;&gt;Remove Tags…&lt;/h4&gt;
-
-&lt;p&gt;Remove tags for the selected file or folder. Enter the tags to remove separated by a single space in the third pane.&lt;/p&gt;
-
-&lt;h4 id=&quot;set_tags&quot;&gt;Set Tags…&lt;/h4&gt;
-
-&lt;p&gt;Replace any tags for the selected file or folder with the ones specified. Enter the tags separated by a single space in the third pane. Existing Spotlight comments will be preserved.&lt;/p&gt;
-
-&lt;h4 id=&quot;set_comment&quot;&gt;Set Comment…&lt;/h4&gt;
-
-&lt;p&gt;Set the file&amp;#8217;s Spotlight comment to the text entered in the thrid pane. Tags (if any) will be preserved.&lt;/p&gt;
-
-&lt;h3 id=&quot;syntax&quot;&gt;Syntax&lt;/h3&gt;
-
-&lt;p&gt;To search for basic terms like &amp;#8220;vacation&amp;#8221;, you can just search for the word. For more complicated searches (by type, etc.) this plugin is unfortunately not able to support the familiar Spotlight syntax like &lt;code&gt;kind:movie&lt;/code&gt;, so you might have to get your hands dirty to set up a search. The syntax for most searches is poorly documented by Apple in &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849-CJBEJBHH&quot;&gt;two&lt;/a&gt; &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html#//apple_ref/doc/uid/TP40001795-SW1&quot;&gt;places&lt;/a&gt;. It&amp;#8217;s really only worth the trouble if you&amp;#8217;re adding a custom catalog entry based on Spotlight, but it also works with most of the actions.&lt;/p&gt;
-
+&lt;h4&gt;Show Comment Tags&lt;/h4&gt;
+&lt;p&gt;Show any tags from the selected file or folder's Spotlight Comments.&lt;/p&gt;
+&lt;h4&gt;Add Comment Tags…&lt;/h4&gt;
+&lt;p&gt;Add tags to the selected file or folder's Spotlight Comments. Enter the new tags separated by a single space in the third pane. Existing tags and comments will be preserved.&lt;/p&gt;
+&lt;h4&gt;Remove Comment Tags…&lt;/h4&gt;
+&lt;p&gt;Remove tags from the selected file or folder's Spotlight Comments. Enter the tags to remove separated by a single space in the third pane.&lt;/p&gt;
+&lt;h4&gt;Set Comment Tags…&lt;/h4&gt;
+&lt;p&gt;Replace any tags in the selected file or folder's Spotlight Comments with the ones specified. Enter the tags separated by a single space in the third pane. Existing comments will be preserved.&lt;/p&gt;
+&lt;h4&gt;Set Comment…&lt;/h4&gt;
+&lt;p&gt;Set the file's Spotlight comment to the text entered in the third pane. Tags in the comments (if any) will be preserved.&lt;/p&gt;
+&lt;h3&gt;Syntax&lt;/h3&gt;
+&lt;p&gt;To search for basic terms like "vacation", you can just search for the word. For more complicated searches (by type, etc.) this plugin is unfortunately not able to support the familiar Spotlight syntax like &lt;code&gt;kind:movie&lt;/code&gt;, so you might have to get your hands dirty to set up a search. The syntax for most searches is poorly documented by Apple in &lt;a href="https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849-CJBEJBHH"&gt;two&lt;/a&gt; &lt;a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html#//apple_ref/doc/uid/TP40001795-SW1"&gt;places&lt;/a&gt;. It's really only worth the trouble if you're adding a custom catalog entry based on Spotlight, but it also works with most of the actions.&lt;/p&gt;
 &lt;p&gt;Some examples might be helpful.&lt;/p&gt;
-
-&lt;p&gt;To search for movies related to &amp;#8220;vacation&amp;#8221;, you might do something like this:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;kMDItemKind LIKE &apos;*movie&apos; &amp;amp;&amp;amp; (kMDItemDisplayName LIKE[cd] &apos;*vaction*&apos; || kMDItemTextContent LIKE[cd] &apos;*vaction*&apos;)
+&lt;p&gt;To search for movies related to "vacation", you might do something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kMDItemKind LIKE '*movie' &amp;amp;&amp;amp; (kMDItemDisplayName LIKE[cd] '*vaction*' || kMDItemTextContent LIKE[cd] '*vaction*')
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To replace the default &amp;#8220;Applications&amp;#8221; preset in your catalog with one that finds &lt;em&gt;all&lt;/em&gt; applications, you could add a new entry with this query:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;kMDItemKind == &apos;Application&apos;
+&lt;p&gt;To replace the default "Applications" preset in your catalog with one that finds &lt;em&gt;all&lt;/em&gt; applications, you could add a new entry with this query:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kMDItemKind == 'Application'
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;A good way to see what attributes are available and what the values look like is to examine a file in Terminal using &lt;code&gt;mdls&lt;/code&gt;.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;mdls ~/Movies/Beach.mov
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;To make things worse, Smart Folders use a different syntax so if you&amp;#8217;re trying to do a complicated search with the &amp;#8220;Show Spotlight Results in Finder&amp;#8221; action, you&amp;#8217;ll need to use that, which is also &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849&quot;&gt;documented&lt;/a&gt;.&lt;/p&gt;</string>
+&lt;p&gt;To make things worse, Smart Folders use a different syntax so if you're trying to do a complicated search with the "Show Spotlight Results in Finder" action, you'll need to use that, which is also &lt;a href="https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849"&gt;documented&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>Find</string>
 		<key>relatedBundles </key>
-		<array/>
+		<array>
+		</array>
 	</dict>
 	<key>QSPresetAdditions</key>
 	<array>
@@ -403,7 +361,7 @@
 					<key>icon</key>
 					<string>Tag</string>
 					<key>name</key>
-					<string>File Tags</string>
+					<string>Comment Tags</string>
 					<key>source</key>
 					<string>QSFileTagsPlugInSource</string>
 				</dict>
@@ -451,11 +409,11 @@
 				<key>class</key>
 				<string>QSPreferencePane</string>
 				<key>description</key>
-				<string>File Tagging Options</string>
+				<string>Comment Tag Options</string>
 				<key>icon</key>
 				<string>Tag</string>
 				<key>name</key>
-				<string>Tags</string>
+				<string>Comment Tags</string>
 				<key>nibBundle</key>
 				<string>com.blacktree.Quicksilver.QSSpotlightPlugIn</string>
 				<key>nibName</key>
