@@ -6,7 +6,9 @@ This adds Spotlight integration to Quicksilver. It allows you to add files to yo
 
 Users on OS X 10.9 or later are strongly encouraged to use the tagging features from the File Attribute Plugin. It offers all of the same features without the compromises by taking advantage of OS X's native tagging system. Tagging related actions and catalog presets are disabled by default, but can be activated in the preferences.
 
-Tags in comments are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with `#`, but you can change this (to `@` or `tag:`) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you'll have to go update all existing tags manually.
+To distinguish between the two systems, the type of tags offered by this plug-in are now referred to as "comment tags".
+
+Comment tags are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with `#`, but you can change this (to `@` or `tag:`) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you'll have to go update all existing tags manually.
 
 Tags and comments are both stored in a file's "Spotlight Comments" field, but they don't interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.
 
@@ -51,23 +53,23 @@ Search only filenames inside the selected folder and display the results in Quic
 
 #### Show Files Matching Comment Tag ####
 
-Create and display a Smart Folder containing files matching the selected tag.
+Create and display a Smart Folder containing files matching the selected comment tag.
 
 #### Show Comment Tags ####
 
-Show any tags from the selected file or folder's Spotlight Comments.
+Show any comment tags for the selected file or folder.
 
 #### Add Comment Tags… ####
 
-Add tags to the selected file or folder's Spotlight Comments. Enter the new tags separated by a single space in the third pane. Existing tags and comments will be preserved.
+Add comment tags to the selected file or folder. Enter the new tags separated by a single space in the third pane. Existing tags and comments will be preserved.
 
 #### Remove Comment Tags… ####
 
-Remove tags from the selected file or folder's Spotlight Comments. Enter the tags to remove separated by a single space in the third pane.
+Remove comment tags from the selected file or folder. Enter the tags to remove separated by a single space in the third pane.
 
 #### Set Comment Tags… ####
 
-Replace any tags in the selected file or folder's Spotlight Comments with the ones specified. Enter the tags separated by a single space in the third pane. Existing comments will be preserved.
+Replace any comment tags with the ones specified. Enter the tags separated by a single space in the third pane. Existing comments will be preserved.
 
 #### Set Comment… ####
 
