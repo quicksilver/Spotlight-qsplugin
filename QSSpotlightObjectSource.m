@@ -120,7 +120,7 @@
 	[settings setObject:newPath forKey:kItemPath];
 	//[settings setObject:[settings objectForKey:@"query"] forKey:kItemName];
 	[currentEntry setObject:[NSNumber numberWithDouble:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
-	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChanged object:[self currentEntry]];
+	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChangedNotification object:[self currentEntry]];
 }
 
 - (NSString *)valueForUndefinedKey:(NSString *)key
