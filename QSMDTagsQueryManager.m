@@ -84,7 +84,7 @@ static QSMDTagsQueryManager *defaultQueryManager = nil;
     for(NSString * tag in tags) {
         NSArray *tempArray = [self filesForTag:tag];
         if (tempArray) {
-            files = [NSMutableArray arrayWithCapacity:[tempArray count]];
+            files = [NSMutableSet setWithCapacity:[tempArray count]];
             [files addObjectsFromArray:tempArray];
         }
     }
