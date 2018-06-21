@@ -55,8 +55,9 @@
 //	[searchObject setIcon:[QSResourceManager imageNamed:@"Find"]];
 //	[results addObject:searchObject];
 	
-	
-	[QSTasks updateTask:@"QSSpotlight" status:@"Performing Search" progress:0];
+	QSTask *spotlightTask = [QSTasks taskWithIdentifier:@"QSSpotlight"];
+	[spotlightTask setStatus:@"Performing Search"];
+	[spotlightTask setProgress:0];
 	//return results;
 }
 
@@ -91,7 +92,7 @@
 		[handle readInBackgroundAndNotify];
 	else{
 		
-		[QSTasks removeTask:@"QSSpotlight"];
+		[[QSTasks taskWithIdentifier:@"QSSpotlight"] stop];
 //		[results removeObjectAtIndex:0];
 		
 //		[[NSNotificationCenter defaultCenter]postNotificationName:@"QSSourceArrayUpdated" object:self userInfo:userInfo];
