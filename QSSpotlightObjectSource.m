@@ -96,15 +96,15 @@
 
 - (NSView *)settingsView
 {
-    if (![super settingsView]){
-        [NSBundle loadNibNamed:NSStringFromClass([self class]) owner:self];
+	if (![super settingsView]) {
+		[[NSBundle bundleForClass:[self class]] loadNibNamed:NSStringFromClass([self class]) owner:self topLevelObjects:NULL];
 	}
-    return [super settingsView];
+	return [super settingsView];
 }
 
 - (IBAction)selectSearchPath:(NSButton *)sender
 {
-	NSMutableDictionary *settings = [self currentEntry];
+	NSMutableDictionary *settings = self.selectedEntry.sourceSettings;
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
 	NSString *oldPath = [[settings objectForKey:kItemPath] stringByStandardizingPath];
 	if (!oldPath) {
@@ -119,8 +119,8 @@
 	// update catalog entry
 	[settings setObject:newPath forKey:kItemPath];
 	//[settings setObject:[settings objectForKey:@"query"] forKey:kItemName];
-	[currentEntry setObject:[NSNumber numberWithDouble:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
-	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChangedNotification object:[self currentEntry]];
+	[settings setObject:[NSNumber numberWithDouble:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
+	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChangedNotification object:[self selectedEntry]];
 }
 
 - (NSString *)valueForUndefinedKey:(NSString *)key
