@@ -32,7 +32,7 @@
     return [QSResourceManager imageNamed:@"Tag"];
 }
 
-- (NSArray *)objectsForEntry:(NSDictionary *)theEntry {
+- (NSArray *)objectsForEntry:(QSCatalogEntry *)theEntry {
     NSMutableArray *objects = nil;
     NSArray *tags = [[QSMDTagsQueryManager sharedInstance] tagsWithTagPrefix:gTagPrefix];
 	if ([tags count] != 0) {        

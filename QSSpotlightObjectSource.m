@@ -38,12 +38,13 @@
 	return [QSResourceManager imageNamed:@"Find"];
 }
 
-- (NSArray *)objectsForEntry:(NSDictionary *)theEntry
+- (NSArray *)objectsForEntry:(QSCatalogEntry *)theEntry
 {
 	// initiate the search
-	NSString *searchString = [theEntry objectForKey:@"query"];
-	NSString *path = [theEntry objectForKey:@"path"];
-	BOOL localDiskOnly = [[theEntry objectForKey:@"ignoreRemovable"] boolValue];
+	NSMutableDictionary *settings = theEntry.sourceSettings;
+	NSString *searchString = [settings objectForKey:@"query"];
+	NSString *path = [settings objectForKey:@"path"];
+	BOOL localDiskOnly = [[settings objectForKey:@"ignoreRemovable"] boolValue];
 	NSMutableSet *skipPrefixes = [NSMutableSet setWithObjects:@"tmp", @"private", nil];
 	if (localDiskOnly) {
 		// don't include results from FireWire, USB, etc.

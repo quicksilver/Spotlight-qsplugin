@@ -36,7 +36,7 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="34" name="value" keyPath="selection.info.query" id="39"/>
+                        <binding destination="-2" name="value" keyPath="selectedEntry.sourceSettings.query" id="zfR-a0-vwU"/>
                     </connections>
                 </textField>
                 <textField verticalHuggingPriority="750" misplaced="YES" id="44">
@@ -68,12 +68,7 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
-                        <binding destination="34" name="value" keyPath="selection.info.path" id="65">
-                            <dictionary key="options">
-                                <string key="NSNullPlaceholder">/</string>
-                                <integer key="NSRaisesForNotApplicableKeys" value="0"/>
-                            </dictionary>
-                        </binding>
+                        <binding destination="-2" name="value" keyPath="selectedEntry.sourceSettings.query" id="TVf-dW-e8Q"/>
                     </connections>
                 </textField>
                 <button misplaced="YES" imageHugsTitle="YES" id="66">
@@ -84,15 +79,11 @@
                         <font key="font" metaFont="smallSystem"/>
                     </buttonCell>
                     <connections>
-                        <binding destination="34" name="value" keyPath="selection.info.ignoreRemovable" id="70">
-                            <dictionary key="options">
-                                <integer key="NSRaisesForNotApplicableKeys" value="0"/>
-                            </dictionary>
-                        </binding>
+                        <binding destination="-2" name="value" keyPath="selectedEntry.sourceSettings.ignoreRemovable" id="Nd2-PT-oxa"/>
                     </connections>
                 </button>
             </subviews>
-            <point key="canvasLocation" x="-7" y="105"/>
+            <point key="canvasLocation" x="5" y="-155"/>
         </customView>
         <objectController id="34">
             <declaredKeys>
@@ -102,7 +93,7 @@
                 <string>info.ignoreRemovable</string>
             </declaredKeys>
             <connections>
-                <binding destination="-2" name="contentObject" keyPath="selection" id="61"/>
+                <binding destination="-2" name="contentObject" keyPath="self.selectedEntry" id="pDt-E6-fua"/>
                 <outlet property="content" destination="-2" id="35"/>
             </connections>
         </objectController>
