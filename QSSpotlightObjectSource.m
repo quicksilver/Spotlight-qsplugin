@@ -107,7 +107,7 @@
 {
 	NSMutableDictionary *settings = self.selectedEntry.sourceSettings;
 	NSOpenPanel *openPanel = [NSOpenPanel openPanel];
-	NSString *oldPath = [[settings objectForKey:kItemPath] stringByStandardizingPath];
+	NSString *oldPath = [settings[kItemPath] stringByStandardizingPath];
 	if (!oldPath) {
 		oldPath = @"/";
 	}
@@ -115,13 +115,14 @@
 	[openPanel setCanChooseFiles:NO];
 	[openPanel setDirectoryURL:[NSURL fileURLWithPath:oldPath]];
 	if (![openPanel runModal]) return;
+
 	NSString *newPath = [[openPanel URL] path];
 	[searchPath setStringValue:[newPath stringByAbbreviatingWithTildeInPath]];
+
 	// update catalog entry
 	[settings setObject:newPath forKey:kItemPath];
-	//[settings setObject:[settings objectForKey:@"query"] forKey:kItemName];
-	[settings setObject:[NSNumber numberWithDouble:[NSDate timeIntervalSinceReferenceDate]] forKey:kItemModificationDate];
-	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChangedNotification object:[self selectedEntry]];
+
+	[self updateCurrentEntryModificationDate];
 }
 
 - (NSString *)valueForUndefinedKey:(NSString *)key
