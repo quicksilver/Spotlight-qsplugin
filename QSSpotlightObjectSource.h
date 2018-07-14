@@ -12,3 +12,8 @@
 	IBOutlet NSTextField *searchPath;
 }
 @end
+
+@interface QSCatalogEntry (OldStyleSourceSupport)
+@property NSMutableDictionary *info;
+- (id)objectForKey:(NSString *)key;
+@end

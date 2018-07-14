@@ -40,6 +40,10 @@
 
 - (NSArray *)objectsForEntry:(QSCatalogEntry *)theEntry
 {
+	// check that settings are in the right place
+	if ([theEntry objectForKey:@"query"]) {
+		[self relocateSettings:theEntry];
+	}
 	// initiate the search
 	NSMutableDictionary *settings = theEntry.sourceSettings;
 	NSString *searchString = [settings objectForKey:@"query"];
@@ -130,4 +134,20 @@
 	return nil;
 }
 
+#pragma mark Catalog API Upgrade
+
+- (void)relocateSettings:(QSCatalogEntry *)theEntry
+{
+	NSMutableDictionary *settings = theEntry.sourceSettings;
+	NSArray *settingToMove = @[
+		@"query",
+		kItemPath,
+		@"ignoreRemovable",
+	];
+	for (NSString *key in settingToMove) {
+		[settings setObject:theEntry.info[key] forKey:key];
+	}
+	[theEntry.info removeObjectsForKeys:settingToMove];
+	[[NSNotificationCenter defaultCenter] postNotificationName:QSCatalogEntryChangedNotification object:theEntry];
+}
 @end
