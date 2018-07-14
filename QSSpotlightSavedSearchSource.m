@@ -26,7 +26,6 @@
 	[results removeObject:searching];
 	[results addObjectsFromArray:[self targetArrayForSavedQueryAtPath:path]];
 	[dc postNotificationName:@"QSSourceArrayUpdated" object:self userInfo:userInfo];
-	[results release];
 	return nil;
 }
 

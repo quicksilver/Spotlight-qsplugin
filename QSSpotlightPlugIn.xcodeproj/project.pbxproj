@@ -244,6 +244,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1483E54710D0F139009F139A /* QSPlugIn.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -252,6 +253,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1483E54710D0F139009F139A /* QSPlugIn.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

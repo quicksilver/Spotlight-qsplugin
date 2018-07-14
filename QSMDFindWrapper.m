@@ -12,40 +12,29 @@
 @implementation QSMDFindWrapper
 
 + (QSMDFindWrapper *)findWrapperWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag{
-	return [[[self alloc] initWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag]autorelease];
+	return [[self alloc] initWithQuery:(NSString *)query path:(NSString *)path keepalive:(BOOL)flag];
 }
 
 - (id)initWithQuery:(NSString *)aQuery path:(NSString *)aPath keepalive:(BOOL)flag{
 	if (self=[super init]){
 		results=[[NSMutableArray alloc]init];
 		resultPaths=[[NSMutableString alloc]init];
-		path=[aPath retain];
-		query=[aQuery retain];
+		path=aPath;
+		query=aQuery;
 		keepalive=flag;
 	}
 	return self;
 }
-- (void)dealloc{
-	//NSLog(@"released wrapper");
-	
-	[results release];
-	[path release];
-	[query release];
-	[task release];
-	[resultPaths release];
-	[super dealloc];
-}
+
 - (NSMutableArray *)results
 {
 	return results;
 }
 - (void)startQuery
 {
-	[self retain];
-	task = [[NSTask taskWithLaunchPath:@"/usr/bin/mdfind" arguments:[NSArray arrayWithObjects:query, path ? @"-onlyin" : nil, path, nil]] retain];
+	task = [NSTask taskWithLaunchPath:@"/usr/bin/mdfind" arguments:[NSArray arrayWithObjects:query, path ? @"-onlyin" : nil, path, nil]];
 	[task setStandardOutput:[NSPipe pipe]];
 	NSFileHandle *handle = [[task standardOutput]fileHandleForReading];
-	[handle retain];
 	[task launch];
 		
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataAvailable:) name:NSFileHandleReadCompletionNotification object:handle];
@@ -61,16 +50,13 @@
 	//return results;
 }
 
-
-
-
 -(void)dataAvailable:(NSNotification *)notif{
 	
 	NSFileHandle *handle=[notif object];
 	//return;
 	NSData *data=[[notif userInfo]
                   objectForKey: NSFileHandleNotificationDataItem];
-	NSString *newString=[[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+	NSString *newString = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
 	if ([newString length])
 		[resultPaths appendString:newString];
 	
@@ -96,7 +82,6 @@
 //		[results removeObjectAtIndex:0];
 		
 //		[[NSNotificationCenter defaultCenter]postNotificationName:@"QSSourceArrayUpdated" object:self userInfo:userInfo];
-		[self release];
 	}
 }
 @end

@@ -192,12 +192,12 @@
                  forKey:@"SearchCriteria"]; 	
 	}
 	
-	NSMutableString *filename = [[name mutableCopy] autorelease];
+	NSMutableString *filename = [name mutableCopy];
 	if (!filename) {
-		filename = [[query mutableCopy] autorelease];
+		filename = [query mutableCopy];
 		[filename replaceOccurrencesOfString:@"/" withString:@"_" options:0 range:NSMakeRange(0, [filename length])];
 		if ([filename length] > 242)
-			filename = [[[filename substringToIndex:242] mutableCopy] autorelease];
+			filename = [[filename substringToIndex:242] mutableCopy];
 	}
 	[filename appendString:@".savedSearch"];
 	filename = (NSMutableString*)[NSTemporaryDirectory() stringByAppendingPathComponent:filename];

@@ -21,7 +21,6 @@
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:NSMetadataQueryDidFinishGatheringNotification object:nil];
-	[super dealloc];
 }
 
 - (void)arrayLoaded:(NSNotification *)notif
@@ -83,7 +82,6 @@
 			NSLog(@"Spotlight catalog entry failed: %@", exception);
 		}
 	}
-	[query release];
 	query = nil;
 	return objects;
 }

@@ -63,7 +63,6 @@ static QSMDTagsQueryManager *defaultQueryManager = nil;
     if ([query resultCount] != 0) {
         objects = [self tagsFromQuery:query];
     }
-    [query release];
     return objects;
 }
 
@@ -75,7 +74,6 @@ static QSMDTagsQueryManager *defaultQueryManager = nil;
     if ([query resultCount] != 0) {
         objects = [self filesWithTag:tag fromQuery:query];
     }
-    [query release];
     return objects;
 }
 

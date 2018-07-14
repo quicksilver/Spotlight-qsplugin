@@ -25,7 +25,7 @@
 + (NSMetadataItem *)itemWithPath:(NSString *)path
 {
 	MDItemRef ref = MDItemCreate(NULL, (CFStringRef)path);
-	[[[self alloc]_init:ref] autorelease];
+	[[self alloc]_init:ref];
 	return nil;
 }
 
@@ -51,7 +51,7 @@
 - (QSObject *)spotlightSearchForString:(QSObject *)dObject
 {
 	OSStatus resultCode = noErr;
-	resultCode = HISearchWindowShow((CFStringRef)[dObject stringValue], kNilOptions);
+	resultCode = HISearchWindowShow((__bridge CFStringRef)[dObject stringValue], kNilOptions);
 	if (resultCode != noErr) {
 		// failed to open the panel
 		// present an error to the user
@@ -134,7 +134,7 @@
 	}
 	[dict setObject:criteria forKey:@"SearchCriteria"];
 	
-	NSMutableString *filename = [[name mutableCopy] autorelease];
+	NSMutableString *filename = [name mutableCopy];
 	[filename replaceOccurrencesOfString:@"/" withString:@"_" options:NSLiteralSearch range:NSMakeRange(0, [filename length])];
 	if ([filename length] > 242) {
 		filename = (NSMutableString *)[filename substringToIndex:242];
@@ -183,7 +183,6 @@
 			NSLog(@"Spotlight search failed: %@", exception);
 		}
 	}
-	[query release];
 	query = nil;
 	[dc postNotificationName:@"QSSourceArrayUpdated" object:self userInfo:userInfo];
 }
