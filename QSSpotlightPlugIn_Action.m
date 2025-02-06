@@ -183,6 +183,7 @@
 			NSLog(@"Spotlight search failed: %@", exception);
 		}
 	}
+    [query stopQuery];
 	query = nil;
 	[dc postNotificationName:@"QSSourceArrayUpdated" object:self userInfo:userInfo];
 }

@@ -15,11 +15,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.0</string>
+	<string>2.2.1</string>
 	<key>CFBundleSignature</key>
 	<string>0.8</string>
 	<key>CFBundleVersion</key>
-	<string>F0</string>
+	<string>F1</string>
 	<key>NSPrincipalClass</key>
 	<string>QSSpotlightPlugIn</string>
 	<key>QSActions</key>
@@ -136,7 +136,7 @@
 			<string>spotlightSearchFilenamesInFolder:forString:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>'fold'</string>
+				<string>&apos;fold&apos;</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -159,7 +159,7 @@
 			<string>QSSpotlightSearchInFolderWithFinder</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>'fold'</string>
+				<string>&apos;fold&apos;</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -178,7 +178,7 @@
 			<string>spotlightSearchFinderInFolder:forString:</string>
 			<key>directFileTypes</key>
 			<array>
-				<string>'fold'</string>
+				<string>&apos;fold&apos;</string>
 			</array>
 			<key>directTypes</key>
 			<array>
@@ -276,19 +276,19 @@
 		<string>&lt;h2&gt;Spotlight Plugin&lt;/h2&gt;
 &lt;p&gt;This adds Spotlight integration to Quicksilver. It allows you to add files to your catalog based on Spotlight queries, tag files, and perform searches directly from Quicksilver.&lt;/p&gt;
 &lt;h3&gt;Tagging&lt;/h3&gt;
-&lt;p&gt;Users on OS X 10.9 or later are strongly encouraged to use the tagging features from the File Attribute Plugin. It offers all of the same features without the compromises by taking advantage of OS X's native tagging system. Tagging related actions and catalog presets are disabled by default, but can be activated in the preferences.&lt;/p&gt;
-&lt;p&gt;To distinguish between the two systems, the type of tags offered by this plug-in are now referred to as "comment tags".&lt;/p&gt;
-&lt;p&gt;Comment tags are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with &lt;code&gt;#&lt;/code&gt;, but you can change this (to &lt;code&gt;@&lt;/code&gt; or &lt;code&gt;tag:&lt;/code&gt;) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you'll have to go update all existing tags manually.&lt;/p&gt;
-&lt;p&gt;Tags and comments are both stored in a file's "Spotlight Comments" field, but they don't interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.&lt;/p&gt;
+&lt;p&gt;Users on OS X 10.9 or later are strongly encouraged to use the tagging features from the File Attribute Plugin. It offers all of the same features without the compromises by taking advantage of OS X&apos;s native tagging system. Tagging related actions and catalog presets are disabled by default, but can be activated in the preferences.&lt;/p&gt;
+&lt;p&gt;To distinguish between the two systems, the type of tags offered by this plug-in are now referred to as &quot;comment tags&quot;.&lt;/p&gt;
+&lt;p&gt;Comment tags are all prefixed with one or more characters to make them stand out from regular text. By default, tags will be prefixed with &lt;code&gt;#&lt;/code&gt;, but you can change this (to &lt;code&gt;@&lt;/code&gt; or &lt;code&gt;tag:&lt;/code&gt;) in the preferences. You should choose a prefix prior to tagging any files and stick with it. If you change it later, you&apos;ll have to go update all existing tags manually.&lt;/p&gt;
+&lt;p&gt;Tags and comments are both stored in a file&apos;s &quot;Spotlight Comments&quot; field, but they don&apos;t interfere with each other. In other words, manipulating tags will not erase an existing comment, and setting a comment will not alter any tags.&lt;/p&gt;
 &lt;h3&gt;Catalog&lt;/h3&gt;
 &lt;h4&gt;Presets&lt;/h4&gt;
 &lt;p&gt;There are two catalog presets added by this plug-in.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Smart Folders&lt;/strong&gt; - Automtically adds any Smart Folders you've created and saved. Presently, all you can do is open them in Finder.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Comment Tags&lt;/strong&gt; - If you've added any tags (using Quicksilver's tag prefix) to your files' Spotlight Comments, this will add them directly to the catalog. Using → or / on a tag will show all files matching that tag.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smart Folders&lt;/strong&gt; - Automtically adds any Smart Folders you&apos;ve created and saved. Presently, all you can do is open them in Finder.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Comment Tags&lt;/strong&gt; - If you&apos;ve added any tags (using Quicksilver&apos;s tag prefix) to your files&apos; Spotlight Comments, this will add them directly to the catalog. Using → or / on a tag will show all files matching that tag.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4&gt;Custom Entries&lt;/h4&gt;
-&lt;p&gt;You can create custom catalog entries to add files based on a Spotlight search. (See the &lt;a href="#syntax"&gt;Syntax&lt;/a&gt; section.) From the catalog preferences, click the "+" and choose "Spotlight". You'll be able to define the query, limit the search to a specific folder, and ignore removable disks via the entry's info panel.&lt;/p&gt;
+&lt;p&gt;You can create custom catalog entries to add files based on a Spotlight search. (See the &lt;a href=&quot;#syntax&quot;&gt;Syntax&lt;/a&gt; section.) From the catalog preferences, click the &quot;+&quot; and choose &quot;Spotlight&quot;. You&apos;ll be able to define the query, limit the search to a specific folder, and ignore removable disks via the entry&apos;s info panel.&lt;/p&gt;
 &lt;h3&gt;Actions&lt;/h3&gt;
 &lt;h4&gt;Get Spotlight Results&lt;/h4&gt;
 &lt;p&gt;Searches for text and shows the results in Quicksilver.&lt;/p&gt;
@@ -313,20 +313,20 @@
 &lt;h4&gt;Set Comment Tags…&lt;/h4&gt;
 &lt;p&gt;Replace any comment tags with the ones specified. Enter the tags separated by a single space in the third pane. Existing comments will be preserved.&lt;/p&gt;
 &lt;h4&gt;Set Comment…&lt;/h4&gt;
-&lt;p&gt;Set the file's Spotlight comment to the text entered in the third pane. Tags in the comments (if any) will be preserved.&lt;/p&gt;
+&lt;p&gt;Set the file&apos;s Spotlight comment to the text entered in the third pane. Tags in the comments (if any) will be preserved.&lt;/p&gt;
 &lt;h3&gt;Syntax&lt;/h3&gt;
-&lt;p&gt;To search for basic terms like "vacation", you can just search for the word. For more complicated searches (by type, etc.) this plugin is unfortunately not able to support the familiar Spotlight syntax like &lt;code&gt;kind:movie&lt;/code&gt;, so you might have to get your hands dirty to set up a search. The syntax for most searches is poorly documented by Apple in &lt;a href="https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849-CJBEJBHH"&gt;two&lt;/a&gt; &lt;a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html#//apple_ref/doc/uid/TP40001795-SW1"&gt;places&lt;/a&gt;. It's really only worth the trouble if you're adding a custom catalog entry based on Spotlight, but it also works with most of the actions.&lt;/p&gt;
+&lt;p&gt;To search for basic terms like &quot;vacation&quot;, you can just search for the word. For more complicated searches (by type, etc.) this plugin is unfortunately not able to support the familiar Spotlight syntax like &lt;code&gt;kind:movie&lt;/code&gt;, so you might have to get your hands dirty to set up a search. The syntax for most searches is poorly documented by Apple in &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849-CJBEJBHH&quot;&gt;two&lt;/a&gt; &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Predicates/Articles/pSyntax.html#//apple_ref/doc/uid/TP40001795-SW1&quot;&gt;places&lt;/a&gt;. It&apos;s really only worth the trouble if you&apos;re adding a custom catalog entry based on Spotlight, but it also works with most of the actions.&lt;/p&gt;
 &lt;p&gt;Some examples might be helpful.&lt;/p&gt;
-&lt;p&gt;To search for movies related to "vacation", you might do something like this:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kMDItemKind LIKE '*movie' &amp;amp;&amp;amp; (kMDItemDisplayName LIKE[cd] '*vaction*' || kMDItemTextContent LIKE[cd] '*vaction*')
+&lt;p&gt;To search for movies related to &quot;vacation&quot;, you might do something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kMDItemKind LIKE &apos;*movie&apos; &amp;amp;&amp;amp; (kMDItemDisplayName LIKE[cd] &apos;*vaction*&apos; || kMDItemTextContent LIKE[cd] &apos;*vaction*&apos;)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To replace the default "Applications" preset in your catalog with one that finds &lt;em&gt;all&lt;/em&gt; applications, you could add a new entry with this query:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;kMDItemKind == 'Application'
+&lt;p&gt;To replace the default &quot;Applications&quot; preset in your catalog with one that finds &lt;em&gt;all&lt;/em&gt; applications, you could add a new entry with this query:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kMDItemKind == &apos;Application&apos;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;A good way to see what attributes are available and what the values look like is to examine a file in Terminal using &lt;code&gt;mdls&lt;/code&gt;.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;mdls ~/Movies/Beach.mov
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To make things worse, Smart Folders use a different syntax so if you're trying to do a complicated search with the "Show Spotlight Results in Finder" action, you'll need to use that, which is also &lt;a href="https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849"&gt;documented&lt;/a&gt;.&lt;/p&gt;</string>
+&lt;p&gt;To make things worse, Smart Folders use a different syntax so if you&apos;re trying to do a complicated search with the &quot;Show Spotlight Results in Finder&quot; action, you&apos;ll need to use that, which is also &lt;a href=&quot;https://developer.apple.com/library/mac/#documentation/Carbon/Conceptual/SpotlightQuery/Concepts/QueryFormat.html#//apple_ref/doc/uid/TP40001849&quot;&gt;documented&lt;/a&gt;.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>Find</string>
 	</dict>
